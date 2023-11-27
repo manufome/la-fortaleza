@@ -69,21 +69,6 @@ CREATE TABLE clientes
     contraseña VARCHAR(16) NOT NULL
   );
 
--- Tabla de contactos
-CREATE TABLE contactos
-  (
-    id_contacto INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_contacto VARCHAR(255) NOT NULL,
-    apellido_contacto VARCHAR(255) NOT NULL,
-    correo VARCHAR(255) NOT NULL,
-    telefono VARCHAR(20),
-    id_cliente INT,
-    CONSTRAINT fk_contactos_clientes 
-      FOREIGN KEY (id_cliente)
-      REFERENCES clientes(id_cliente) 
-      ON DELETE CASCADE
-  );
-
 -- Tabla de órdenes
 CREATE TABLE ordenes
   (
