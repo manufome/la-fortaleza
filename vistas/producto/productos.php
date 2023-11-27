@@ -12,7 +12,7 @@
             echo '<h3>' . $categoria . '</h3>';
             echo '<a href="#' . $categoria . '">Y MUCHO MAS!!!</a>';
             echo '</div>';
-            echo '<img src="View/images/categorias/' . $categoria. '.png" alt="' . $categoria. '">';
+            echo '<img src="vistas/images/categorias/' . $categoria. '.png" alt="' . $categoria. '">';
             echo '</div>';
             echo '</div>';
         }
@@ -30,14 +30,14 @@
             foreach ($productos as $producto) {
                 $file_name = $producto['nombre_producto'];
                 foreach ($file_extensions as $extension) {
-                    if (file_exists('View/images/productos/' . $file_name . '.' . $extension)) {
+                    if (file_exists('vistas/images/productos/' . $file_name . '.' . $extension)) {
                         $file_name .= '.' . $extension;
                         break;
                     }
                 }
                 if ($producto['id_categoria'] == $categoria['id_categoria']) {
                     echo '<div class="box">';
-                    echo '<img src="View/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
+                    echo '<img src="vistas/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
                     echo '<div class="product-txt">';
                     echo '<h3>' . $producto['nombre_producto'] . '</h3>';
                     echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
@@ -61,23 +61,23 @@
             <div class="testimonial-1">
                 <p>Cada uno de los servicios que ofrece el establecimiento cumple con mis expectativas con una muy buena
                     atención GRACIAS!</p>
-                <img src="View/images/icons/starts.png">
+                <img src="vistas/images/icons/starts.png">
                 <h4>Calificación </h4>
             </div>
             <div class="testimonial-1">
                 <p>Sus servicios de envíos son muy rápidos y eficaces dándome un maravilloso servicio </p>
-                <img src="View/images/icons/starts.png">
+                <img src="vistas/images/icons/starts.png">
                 <h4>Calificación </h4>
             </div>  
             <div class="testimonial-1">
                 <p>Tiene una plataforma muy amigable con el usuario fácil de usar y otorga la información necesaria para
                     hacer mis compras muy ágil y fácil </p>
-                <img src="View/images/icons/starts.png">
+                <img src="vistas/images/icons/starts.png">
                 <h4>Calificación </h4>
             </div>
         </div>
     </section>
-    <script src="View/js/script.js"></script>
+    <script src="vistas/js/script.js"></script>
     <script>
         const categorias = <?php echo json_encode($categorias); ?>;
 
@@ -113,9 +113,9 @@
             categoriaCentroElement.innerText = categorias[posicionActual + 1].nombre_categoria;
             categoriaDerechaElement.innerText = categorias[posicionActual + 2].nombre_categoria;
 
-            categoriaIzquierdaImg.src = 'View/images/categorias/' + categorias[posicionActual].nombre_categoria + '.png';
-            categoriaCentroImg.src = 'View/images/categorias/' + categorias[posicionActual + 1].nombre_categoria + '.png';
-            categoriaDerechaImg.src = 'View/images/categorias/' + categorias[posicionActual + 2].nombre_categoria + '.png';
+            categoriaIzquierdaImg.src = 'vistas/images/categorias/' + categorias[posicionActual].nombre_categoria + '.png';
+            categoriaCentroImg.src = 'vistas/images/categorias/' + categorias[posicionActual + 1].nombre_categoria + '.png';
+            categoriaDerechaImg.src = 'vistas/images/categorias/' + categorias[posicionActual + 2].nombre_categoria + '.png';
 
             categoriaIzquierdaButton.href = '#' + categorias[posicionActual].nombre_categoria;
             categoriaCentroButton.href = '#' + categorias[posicionActual + 1].nombre_categoria;

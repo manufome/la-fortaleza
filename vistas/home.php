@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="View/css/index.css">
+    <link rel="stylesheet" href="vistas/css/index.css">
     <meta mane="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-acale=1.0">
 </head>
 
@@ -17,7 +17,7 @@
     
     <header class="header">
         <div class="header__logo">
-            <img src="View/images/icons/logo.png" alt="">
+            <img src="vistas/images/icons/logo.png" alt="">
             <h4>La Fortaleza</h4>
         </div>
         <nav class="header__nav">
@@ -33,7 +33,7 @@
         <div class="container-cover">
             <div class="container-child-cover">
                 <div class="container-imagen">
-                    <img src="View/images/icons/almacen.jpg">
+                    <img src="vistas/images/icons/almacen.jpg">
                 </div>
                 <div class="capa-shadow"></div>
                 <div class="capa2"></div>
@@ -56,7 +56,7 @@
                 echo '<div class="products__card">';
                 echo '<div class="products_img">';
                 // Aquí puedes usar el nombre de la categoría o algún otro dato para construir la ruta de la imagen
-                echo '<img src="View/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
+                echo '<img src="vistas/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
                 echo '</div>';
                 echo '<div class="products__info">';
                 echo '<h3>' . $categoria['nombre_categoria'] . '</h3>';

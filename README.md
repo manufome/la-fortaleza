@@ -34,7 +34,7 @@ Este proyecto es un sistema de comercio electrónico diseñado para un supermerc
 
 3. Configuración de Conexión a la Base de Datos:
 
-    - Actualiza los detalles de conexión en el archivo `Model/database.php` con tu información de base de datos.
+    - Actualiza los detalles de conexión en el archivo `modelos/database.php` con tu información de base de datos.
 
 4. Accede al sistema:
 

@@ -1,5 +1,5 @@
 <?php
-require_once 'Model/database.php';
+require_once 'modelos/database.php';
 class CategoriasProductos {
     private $conn;
     private $categorias;

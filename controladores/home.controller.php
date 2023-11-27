@@ -1,7 +1,7 @@
 <?php
 // Incluye la conexión y el modelo de productos
-include_once 'Model/database.php';
-include_once 'Model/categorias.php';
+include_once 'modelos/database.php';
+include_once 'modelos/categorias.php';
 
 class HomeController{
     private $modelo;
@@ -12,7 +12,7 @@ class HomeController{
     
     public function index(){
         $categorias = $this->modelo->read();
-        require_once 'View/home.php';
-        require_once 'View/footer.php';
+        require_once 'vistas/home.php';
+        require_once 'vistas/footer.php';
     }
 }

@@ -1,5 +1,5 @@
 <?php
-require_once 'Model/producto.php';
+require_once 'modelos/producto.php';
 
 class ProductController{
     private $model;
@@ -11,9 +11,9 @@ class ProductController{
     public function index(){
         $products = $this->model->getProducts();
         
-        require_once 'View/header.php';
-        require_once 'View/product.php';
-        require_once 'View/footer.php';
+        require_once 'vistas/header.php';
+        require_once 'vistas/product.php';
+        require_once 'vistas/footer.php';
     }
 }
 ?>

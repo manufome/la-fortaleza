@@ -1,9 +1,9 @@
 <?php
 // index.php
 
-require_once 'Model/database.php';
-require_once 'Controller/home.controller.php';
-require_once 'Controller/productos.controller.php';
+require_once 'modelos/database.php';
+require_once 'controladores/home.controller.php';
+require_once 'controladores/productos.controller.php';
 
 $conn = Database::connect();
 
@@ -21,8 +21,8 @@ $controllerName = $controller . '.controller';
 $className = ucwords($controller).'Controller';
 
 // Incluye el archivo del controlador si existe
-if (file_exists("Controller/$controllerName.php")) {
-    require_once "Controller/$controllerName.php";
+if (file_exists("controladores/$controllerName.php")) {
+    require_once "controladores/$controllerName.php";
 
     // Instancia el controlador
     $controllerInstance = new $className($conn);
@@ -32,11 +32,11 @@ if (file_exists("Controller/$controllerName.php")) {
         $controllerInstance->$action();
     } else {
         // Acción no válida, manejar según sea necesario
-        require_once 'View/errores/error500.php';
+        require_once 'vistas/errores/error500.php';
     }
 } else {
     // Controlador no válido, manejar según sea necesario
-    require_once 'View/errores/error404.php';
+    require_once 'vistas/errores/error404.php';
 }
 
 

@@ -4,7 +4,7 @@
 <head>
     <title>Iniciar Sesión</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="View/css/login.css">
+    <link rel="stylesheet" href="vistas/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -80,9 +80,9 @@
             </form>
         </div>
     </main>
-    <script src="View/js/login.js" type='module' defer></script>
+    <script src="vistas/js/login.js" type='module' defer></script>
     <script type='module' defer>
-        import { register } from './View/js/login.js';
+        import { register } from './vistas/js/login.js';
         const flag = <?= isset($register) ? 'true' : 'false' ?>;
         if (flag) {
             register();

@@ -8,13 +8,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="View/css/productos.css">
+    <link rel="stylesheet" href="vistas/css/productos.css">
 </head>
     <body>
 
     <header class="header">
         <div class="header__logo">
-            <img src="View/images/icons/logo.png" alt="">
+            <img src="vistas/images/icons/logo.png" alt="">
             <h4>La Fortaleza</h4>
         </div>
         <div style="display: flex; align-items: center;">
@@ -22,7 +22,7 @@
         <div style="padding: 0 30px;">
                 <ul>
                     <li class="submenu">
-                        <img id="img-carrito" src="View/images/icons/car.svg" alt="car">
+                        <img id="img-carrito" src="vistas/images/icons/car.svg" alt="car">
                         <div id="carrito">
                             <table id="lista-carrito">
                                 <thead>

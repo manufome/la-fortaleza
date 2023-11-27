@@ -1,5 +1,5 @@
 <?php
-require_once 'Model/producto.php';
+require_once 'modelos/producto.php';
 
 class ProductosController{
     private $modeloProducto;
@@ -13,9 +13,9 @@ class ProductosController{
     public function index(){
         $productos = $this->modeloProducto->read();
         $categorias = $this->modeloCategoria->read();
-        require_once 'View/header.php';
-        require_once 'View/producto/productos.php';
-        require_once 'View/footer.php';
+        require_once 'vistas/header.php';
+        require_once 'vistas/producto/productos.php';
+        require_once 'vistas/footer.php';
     }
 }
 ?>

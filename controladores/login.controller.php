@@ -1,5 +1,5 @@
 <?php
-require_once 'Model/login.php';
+require_once 'modelos/login.php';
 
 class LoginController{
     private $model;
@@ -9,7 +9,7 @@ class LoginController{
     }
     
     public function index(){
-        require_once 'View/login/login.php';
+        require_once 'vistas/login/login.php';
     }
 
     public function login(){
@@ -21,7 +21,7 @@ class LoginController{
             header('Location: index.php?controller=home&action=index');
         }else{
             $error = 'Usuario o contraseña incorrectos';
-            require_once 'View/login/login.php';
+            require_once 'vistas/login/login.php';
         }
     }
 
@@ -44,12 +44,12 @@ class LoginController{
                 header('Location: index.php?controller=home&action=index');
             }else{
                 $error_register = 'Error al registrar el usuario';
-                require_once 'View/login/login.php';
+                require_once 'vistas/login/login.php';
             }
         }else{
             $error_register = 'Error al registrar el usuario';
             $register = true;
-            require_once 'View/login/login.php';
+            require_once 'vistas/login/login.php';
         }
     }
 }
