@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    background-image: url(../images/Almacen.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos para el formulario */
+form {
+    margin-top: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid #7db5ed;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #22cf0b;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-check-label {
+    font-weight: normal;
+}
+
+.btn-primary {
+    background-color: #1bd47e;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #46e024;
+}
+
+/* Estilos para mensajes de error */
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 80%;
+}
+
+/* Estilos para el botón */
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+}
