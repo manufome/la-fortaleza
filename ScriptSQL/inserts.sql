@@ -217,7 +217,7 @@ INSERT INTO empleados (nombre, apellido, correo, telefono, fecha_contratacion, i
 INSERT INTO clientes (nombre, direccion, correo, limite_credito, contraseña) VALUES
   ('Cliente A', 'Calle Principal 456', 'clientea@gmail.com', 50000.00, 'Cliente1'),
   ('Cliente B', 'Avenida Central 789', 'clienteb@gmail.com', 80000.00, 'Cliente2'),
-  ('Cliente C', 'Calle Secundaria 123', 'clientec@gmail.com', 100000.00, , 'Cliente3');
+  ('Cliente C', 'Calle Secundaria 123', 'clientec@gmail.com', 100000.00, 'Cliente3');
 
 
 -- Inserts para la tabla de órdenes
