@@ -47,7 +47,7 @@ class LoginController{
                 require_once 'vistas/login/login.php';
             }
         }else{
-            $error_register = 'Error al registrar el usuario';
+            $error_register = 'Las contraseñas no coinciden';
             $register = true;
             require_once 'vistas/login/login.php';
         }
