@@ -59,16 +59,16 @@ CREATE TABLE productos
   );
 
 -- Tabla de clientes
-CREATE TABLE clientes
-  (
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    direccion VARCHAR(255),
-    correo VARCHAR(255) NOT NULL,
-    limite_credito DECIMAL(8,2),
-    contraseña VARCHAR(16) NOT NULL
-  );
-
+CREATE TABLE clientes 
+(
+    id_cliente int NOT NULL AUTO_INCREMENT,
+    nombre varchar(255) NOT NULL,
+    direccion varchar(255) DEFAULT NULL,
+    correo varchar(255) NOT NULL,
+    limite_credito decimal(8,2) DEFAULT NULL,
+    PRIMARY KEY (id_cliente),
+    UNIQUE KEY correo_UNIQUE (correo)
+);
 -- Tabla de órdenes
 CREATE TABLE ordenes
   (
@@ -106,7 +106,7 @@ CREATE TABLE items_ordenes
       ON DELETE CASCADE
   );
 
--- Inventario
+-- Tabla de inventarios
 CREATE TABLE inventarios
   (
     id_producto INT, -- fk
@@ -121,4 +121,22 @@ CREATE TABLE inventarios
       FOREIGN KEY (id_almacen)
       REFERENCES almacenes(id_almacen) 
       ON DELETE CASCADE
+  );
+
+
+-- Tabla de usuarios
+CREATE TABLE usuarios 
+  (
+    id_usuario int NOT NULL AUTO_INCREMENT,
+    nombre_usuario varchar(255) NOT NULL,
+    contraseña varchar(16) NOT NULL,
+    rol enum('cliente','empleado','admin') NOT NULL,
+    id_cliente int DEFAULT NULL,
+    id_empleado int DEFAULT NULL,
+    PRIMARY KEY (id_usuario),
+    UNIQUE KEY nombre_usuario (nombre_usuario),
+    KEY id_cliente (id_cliente),
+    KEY id_empleado (id_empleado),
+    CONSTRAINT usuarios_ibfk_1 FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente) ON DELETE CASCADE,
+    CONSTRAINT usuarios_ibfk_2 FOREIGN KEY (id_empleado) REFERENCES empleados (id_empleado) ON DELETE CASCADE
   );

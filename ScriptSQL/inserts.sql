@@ -263,15 +263,32 @@ INSERT INTO almacenes (nombre_almacen, id_ubicacion) VALUES
 
 -- Inserts para la tabla de empleados
 INSERT INTO empleados (nombre, apellido, correo, telefono, fecha_contratacion, id_jefe, titulo_puesto) VALUES
-  ('Yanet', 'Meneses', 'juan.gomez@email.com', '123-456-7890', '2023-01-01', NULL, 'Gerente'),
+  ('Yanet', 'Meneses', 'yameneses@email.com', '123-456-7890', '2023-01-01', NULL, 'Gerente'),
   ('Ana', 'Martinez', 'ana.martinez@email.com', '987-654-3210', '2023-02-15', 1, 'Supervisor'),
   ('Carlos', 'Lopez', 'carlos.lopez@email.com', '555-555-5555', '2023-03-20', 2, 'Asistente');
 
+
+-- Inserts para la tabla de usuarios (empleados)
+INSERT INTO usuarios (nombre_usuario, contraseña, rol, id_cliente, id_empleado)
+VALUES
+  ('yanetM', 'Yanet123', 'admin', NULL, 1),
+  ('anaM', 'Anita123', 'empleado', NULL, 2),
+  ('carlosL', 'Carlos123', 'empleado', NULL, 3);
+
+
 -- Inserts para la tabla de clientes
-INSERT INTO clientes (nombre, direccion, correo, limite_credito, contraseña) VALUES
-  ('Cliente A', 'Calle Principal 456', 'clientea@gmail.com', 50000.00, 'Cliente1'),
-  ('Cliente B', 'Avenida Central 789', 'clienteb@gmail.com', 80000.00, 'Cliente2'),
-  ('Cliente C', 'Calle Secundaria 123', 'clientec@gmail.com', 100000.00, , 'Cliente3');
+INSERT INTO clientes (nombre, direccion, correo, limite_credito)
+VALUES
+  ('Cliente A', 'Calle Principal 123', 'clienteA@email.com', 50000.00),
+  ('Cliente B', 'Avenida Central 456', 'clienteB@email.com', 80000.00),
+  ('Cliente C', 'Calle Secundaria 789', 'clienteC@email.com', 100000.00);
+
+-- Inserts para la tabla de usuarios
+INSERT INTO usuarios (nombre_usuario, contraseña, rol, id_cliente, id_empleado)
+VALUES
+  ('clienteA', 'passwordA1', 'cliente', 1, NULL),
+  ('clienteB', 'passwordB2', 'cliente', 2, NULL),
+  ('clienteC', 'passwordC3', 'cliente', 3, NULL);
 
 
 -- Inserts para la tabla de órdenes
@@ -296,5 +313,116 @@ INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
   (1, 3, 120),
   (2, 3, 60);
 
+--INVENTARIO ALMACEN 1
+
+INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
+  (3, 1, 80),   -- Arepa de chócolo
+  (4, 1, 120),  -- Arepa con queso mozzarella
+  (5, 1, 60),   -- Arepa de maíz blanco con avena y chía
+
+  (6, 1, 30),   -- Caldo de costilla Maggi
+  (7, 1, 40),   -- Caldo de gallina Maggi
+  (8, 1, 20),   -- Caldo de gallina Speciaria
+  (9, 1, 15),   -- Crema de chócolo Velsup
+  (10, 1, 25),  -- Caldo de costilla Speciaria
+
+  (11, 1, 20),  -- Salchicha ranchera
+  (12, 1, 15),  -- Jamón Pietran estándar
+  (13, 1, 10),  -- Combo tradicional Viandé
+  (14, 1, 25),  -- Morcilla Viandé
+  (15, 1, 18),  -- Jamón de pollo premium Brakel
+
+  (16, 1, 35),  -- Choco Krispis Kellogg's
+  (17, 1, 25),  -- Zucaritas Kellogg's
+  (18, 1, 15),  -- Cereal Flips Chocolate
+  (19, 1, 28),  -- Froot Loops Kellogg's
+  (20, 1, 22); -- Cereal Original Fitness
+
+
+INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
+  (21, 1, 32),  -- Sal Refisal
+  (22, 1, 18),  -- Mezcla condimentos Sazonarey
+  (23, 1, 15),  -- Pasta de pimentón Delika
+  (24, 1, 20),  -- Mezcla para adobar Delika
+  (25, 1, 25),  -- Pasta de ajo Delika
+
+  (26, 1, 40),  -- Tirudito Supercoco
+  (27, 1, 20),  -- Galleta wafer Cocoseet
+  (28, 1, 15),  -- Bom Bom Bum Fresa
+  (29, 1, 22),  -- Chocolate KitKat Chunky
+  (30, 1, 18),  -- Halls Limón y Miel
+
+  (31, 1, 25),  -- Tomates enteros pelados Deliziare
+  (32, 1, 20),  -- Fríjoles con tocino Cooltivo
+  (33, 1, 18),  -- Atún rallado El Navío
+  (34, 1, 15),  -- Ensalada campesina Cooltivo
+  (35, 1, 10),  -- Salmón en aceite Carlo Forte
+
+  (36, 1, 15),  -- Galleta 2 tacos Ducales Noel
+  (37, 1, 28),  -- Galletas vainilla 18un Wafer Noel
+  (38, 1, 22),  -- Galletas sandwich queso Dux
+  (39, 1, 18),  -- Galleta integral Club Social
+  (40, 1, 25),  -- Galleta Happy Black
+
+  (41, 1, 20),  -- Panela pulverizada El Refugio
+  (42, 1, 15),  -- Arroz Diana
+  (43, 1, 25),  -- Arroz integral Diana
+  (44, 1, 18),  -- Azúcar blanca
+  (45, 1, 22),  -- Endulzante con stevia Natri
+
+  (46, 1, 30),  -- Harina de trigo con polvo para hornear
+  (47, 1, 25),  -- Grano entero de quinua
+  (48, 1, 20),  -- Premezcla para pancakes Quicksy
+  (49, 1, 28),  -- Harina de trigo Quicksy
+  (50, 1, 22);  -- Premezcla de galletas con chips de chocolate Qu
+
+
+INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
+  (51, 1, 18),  -- Huevos de codorniz Sol Naciente
+  (52, 1, 22),  -- Huevo tipo AA Sol Naciente (30 und)
+  (53, 1, 15),  -- Huevo tipo AA Sol Naciente (12 und)
+  (54, 1, 25),  -- Huevo tipo A Sol Naciente (30 und)
+
+  (55, 1, 25),  -- Esparcible multiusos Rama
+  (56, 1, 20),  -- Aceite Gota de Oro 3000 ml
+  (57, 1, 22),  -- Aceite de girasol Don Olio 2000 ml
+  (58, 1, 15),  -- Aceite de canola Don Olio 2000 ml
+  (59, 1, 18),  -- Esparcible Don Olio Light
+
+  (60, 1, 30),  -- Achiras del Huila
+  (61, 1, 25),  -- Roscón resobado Bocadillo Josmar
+  (62, 1, 18),  -- Gansito Ramo 6 unidades
+  (63, 1, 22),  -- Pingüinos Marinela 4 und
+  (64, 1, 20),  -- Brownie con arequipe Horneaditos
+
+  (65, 1, 22),  -- Chicharrón Carn Ameri La Victoria
+  (66, 1, 18),  -- Crispeta Caramelo Cheetos
+  (67, 1, 20),  -- De Todito BBQ
+  (68, 1, 15),  -- Lonjas de almendra Nuthos
+  (69, 1, 25),  -- Mezcla nueces Premium Nuthos
+
+  (70, 1, 25),  -- Conchas Doria
+  (71, 1, 20),  -- Cabello de ángel Doria
+  (72, 1, 18),  -- Spaguetti Capríssima
+  (73, 1, 15),  -- Concha Capríssima
+  (74, 1, 22),  -- Cabello de ángel Capríssima
+
+  (75, 1, 18),  -- Tamal Tolimense
+  (76, 1, 25),  -- Pizza de jamón y queso / Hawaiiana Backerei
+  (77, 1, 20),  -- Ramen Nissin sabor carne
+  (78, 1, 22),  -- Ramen Nissin sabor pollo
+
+  (79, 1, 20),  -- Flan de leche con caramelo Latti
+  (80, 1, 15),  -- Postre de gelatina con leche Kedeli
+  (81, 1, 25),  -- Arroz con leche Tradición 1915
+  (82, 1, 18),  -- Leche asada Tradición 1915
+
+  (83, 1, 22),  -- Salsa mayomostaza con especias Showy
+  (84, 1, 25),  -- Vinagreta Ranch Zev
+  (85, 1, 18),  -- Vinagreta Surtida Zev
+  (86, 1, 15),  -- Mayonesa Früco
+  (87, 1, 20);  -- Salsa tártara Zev
+
+  
 
 

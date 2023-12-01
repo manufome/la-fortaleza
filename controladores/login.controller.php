@@ -3,20 +3,31 @@ require_once 'modelos/login.php';
 
 class LoginController{
     private $model;
+    private $admin = false;
     
     public function __construct($conn){
         $this->model = new Login($conn);
+        $this->admin = isset($_GET['admin']) ? true : false;
     }
     
     public function index(){
+        if ($this->admin) {
+            $admin = true;
+        }
         require_once 'vistas/login/login.php';
     }
 
     public function login(){
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $user = $this->model->validateUser($email, $password);
+        $admin = isset($_POST['admin']) ? true : false;
+        $user = $this->model->validateUser($email, $password, $admin);
         if($user){
+            if ($admin) {
+                $_SESSION['admin'] = $user;
+                header('Location: index.php?controller=infoUsuario&action=index');
+                return;
+            }
             $_SESSION['user'] = $user;
             header('Location: index.php?controller=home&action=index');
         }else{
@@ -26,8 +37,12 @@ class LoginController{
     }
 
     public function logout(){
+        // Elimina la variable de sesión
+        session_unset();
+        // Elimina la sesión
         session_destroy();
-        header('Location: index.php?controller=login&action=index');
+        
+        header('Location: index.php?controller=home&action=index');
     }
 
     public function register(){
@@ -38,7 +53,6 @@ class LoginController{
         $confirmPassword = $_POST['confirmPassword'];
         if($password == $confirmPassword){
             $user = $this->model->createUser($name, $email, $address, $password);
-            var_dump($user);
             if($user){
                 $_SESSION['user'] = $user;
                 header('Location: index.php?controller=home&action=index');

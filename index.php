@@ -1,6 +1,8 @@
 <?php
 // index.php
 
+session_start();
+
 require_once 'modelos/database.php';
 require_once 'controladores/home.controller.php';
 require_once 'controladores/productos.controller.php';

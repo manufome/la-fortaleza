@@ -4,7 +4,7 @@
 <head>
     <title>Iniciar Sesión</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="vistas/css/login.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -23,10 +23,7 @@
                     <h3>¿Aún no tienes cuenta?</h3>
                     <p> Registrate para que puedas iniciar sesión </p>
                     <button id="btn__registrarse">Registrarse </button>
-
                 </div>
-
-
             </div>
             <div class="contenedor__login-register">
 
@@ -35,7 +32,7 @@
                 <h2>Iniciar Sesion </h2>
 
                 <div class="input-box animation" style="--i: 1; --j: 24;">
-                    <input type="email" name="email" required placeholder="Correo Electrónico">
+                    <input type="text" name="email" required placeholder="Nombre de Usuario">
                     <i class='bx bxs-envelope'></i>
                 </div>
 
@@ -50,6 +47,24 @@
                 <?php endif; ?>
                 <input type="hidden" name="controller" value="login">
                 <input type="hidden" name="action" value="login">
+                <div class="input-box animation">
+                    <br>
+                    <br>
+                    <?php if (isset($admin) && $admin) {
+                        echo '<input type="hidden" name="admin" value="true">';
+                        echo '<center><h5>¿Eres cliente?</h5><center>';
+                        echo '<center><a href="index.php?controller=login&action=index" style="font-size: 12px;">Ingresa aquí</a></center>';
+                    } else {
+                        if (isset($_SESSION['admin'])) {
+                            echo '<center><h5>Administrar Inventario</h5><center>';
+                            echo '<center><a href="index.php?controller=inventario&action=index" style="font-size: 12px;">Ingresa aquí</a></center>';
+                        }else{
+                            echo '<center><h5>¿Eres administrador?</h5><center>';
+                            echo '<center><a href="index.php?controller=login&action=index&admin=true" style="font-size: 12px;">Ingresa aquí</a></center>';
+                        }
+                    }
+                    ?>
+                </div>
                 <center><button type="submit">Entrar</button></center><br>
                 <center><span class="contra"><a href="formulario de recuperacion de cuenta/formulario.html">Recuperar Contraseña</a></span></center>
             </form>
@@ -78,11 +93,17 @@
                 <input type="hidden" name="controller" value="login">
                 <input type="hidden" name="action" value="register">
             </form>
+            <div class="contenedor__login-register">
+                <div class="caja_trasera-register">
+
+                </div>
+            </div>
+
         </div>
     </main>
-    <script src="vistas/js/login.js" type='module' defer></script>
+    <script src="assets/js/login.js" type='module' defer></script>
     <script type='module' defer>
-        import { register } from './vistas/js/login.js';
+        import { register } from './assets/js/login.js';
         const flag = <?= isset($register) ? 'true' : 'false' ?>;
         if (flag) {
             register();

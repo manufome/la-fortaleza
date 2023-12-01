@@ -11,29 +11,42 @@ class Login{
 
     // Create
     function createUser($nombre, $correo, $direccion, $contrasena){
-        $query = "INSERT INTO clientes (nombre, correo, direccion, contraseña) VALUES ('$nombre', '$correo', '$direccion', ?)";
+        $query = "INSERT INTO usuarios (nombre_usuario, contraseña, rol, id_cliente, id_empleado) VALUES ('$nombre', '$correo', '$direccion', '$contrasena')";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $contrasena);
+        $stmt->bindParam(1, $nombre);
+        $stmt->bindParam(2, $correo);
+        $stmt->bindParam(3, $direccion);
+        $stmt->bindParam(4, $contrasena);
         $stmt->execute();
         return $stmt;
     }
 
     // Read
-    function validateUser($correo, $contrasena){
-        $query = "SELECT * FROM clientes WHERE correo = ? AND contraseña = ?";
+    function validateUser($nombre_usuario, $contrasena, $admin){
+        $query = "SELECT U.*, C.*, E.*
+                    FROM usuarios U
+                    LEFT JOIN clientes C ON U.id_cliente = C.id_cliente
+                    LEFT JOIN empleados E ON U.id_empleado = E.id_empleado
+                    WHERE U.nombre_usuario = ? AND U.contraseña = ? AND U.rol = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $correo);
+        $stmt->bindParam(1, $nombre_usuario);
         $stmt->bindParam(2, $contrasena);
+        if ($admin) {
+            $rol = 'admin';
+        }else{
+            $rol = 'cliente';
+        }
+        $stmt->bindParam(3, $rol);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Update
-    function updateUser($id, $nuevoCorreo, $nuevaContrasena){
-        $query = "UPDATE clientes SET correo = ?, contraseña = ? WHERE id = ?";
+    function updateUser($id, $nombre_usuario, $nueva_contrasena){
+        $query = "UPDATE usuarios SET nombre_usuario = ?, contraseña = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $nuevoCorreo);
-        $stmt->bindParam(2, $nuevaContrasena);
+        $stmt->bindParam(1, $nombre_usuario);
+        $stmt->bindParam(2, $nueva_contrasena);
         $stmt->bindParam(3, $id);
         $stmt->execute();
         return $stmt;
@@ -41,7 +54,7 @@ class Login{
 
     // Delete
     function deleteUser($id){
-        $query = "DELETE FROM clientes WHERE id = ?";
+        $query = "DELETE FROM usuarios WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $id);
         $stmt->execute();

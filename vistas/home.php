@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="vistas/css/index.css">
+    <link rel="stylesheet" href="assets/css/index.css">
     <meta mane="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-acale=1.0">
 </head>
 
@@ -17,23 +17,32 @@
     
     <header class="header">
         <div class="header__logo">
-            <img src="vistas/images/icons/logo.png" alt="">
+            <img src="assets/images/icons/logo.png" alt="">
             <h4>La Fortaleza</h4>
         </div>
-        <nav class="header__nav">
+        <div style="display: flex; align-items: center;">
+        <?php if (isset($_SESSION['user'])): ?>   
+            <li style='margin-right: 30px'><i class="user-icon fas fa-user"></i> Bienvenido, <?php echo $_SESSION['user']['nombre_usuario']; ?>!</li>
+        <?php endif; ?> 
+            <nav class="header__nav">
                 <ul class="header__list">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="index.php?controller=productos&action=index">Productos</a></li>
                     <li><a href="index.php?controller=contactenos&action=index">Contáctenos</a></li>
-                    <li><a href="index.php?controller=login&action=index">Ingresar</a></li>
+                    <?php if (isset($_SESSION['user'])): ?> 
+                        <li><a href="index.php?controller=login&action=logout">Salir</a></li>
+                    <?php else: ?>
+                        <li><a href="index.php?controller=login&action=index">Ingresar</a></li>
+                    <?php endif; ?>
                 </ul>
-        </nav>
+            </nav>
+        </div>
     </header>
     <div class="main-container">
         <div class="container-cover">
             <div class="container-child-cover">
                 <div class="container-imagen">
-                    <img src="vistas/images/icons/almacen.jpg">
+                    <img src="assets/images/icons/almacen.jpg">
                 </div>
                 <div class="capa-shadow"></div>
                 <div class="capa2"></div>
@@ -56,7 +65,7 @@
                 echo '<div class="products__card">';
                 echo '<div class="products_img">';
                 // Aquí puedes usar el nombre de la categoría o algún otro dato para construir la ruta de la imagen
-                echo '<img src="vistas/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
+                echo '<img src="assets/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
                 echo '</div>';
                 echo '<div class="products__info">';
                 echo '<h3>' . $categoria['nombre_categoria'] . '</h3>';
