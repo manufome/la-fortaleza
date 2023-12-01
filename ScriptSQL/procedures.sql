@@ -75,3 +75,38 @@ BEGIN
     END IF;
 END ;;
 DELIMITER ;
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrar_cliente`(
+    IN p_nombre VARCHAR(255),
+    IN p_username VARCHAR(255),
+    IN p_correo VARCHAR(255),
+    IN p_direccion VARCHAR(255),
+    IN p_contrasena VARCHAR(255)
+)
+BEGIN
+    DECLARE v_id_cliente INT;
+    DECLARE v_id_usuario INT;
+	
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+    BEGIN
+        -- Si ocurre una excepción, realiza un rollback
+        ROLLBACK;
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: No se pudo completar la operación.';
+    END;
+    
+    START TRANSACTION;
+    -- Insertar en la tabla clientes
+    INSERT INTO clientes (nombre, correo, direccion)
+    VALUES (p_nombre, p_correo, p_direccion);
+
+    -- Obtener el ID del cliente recién insertado
+    SET v_id_cliente = LAST_INSERT_ID();
+
+    -- Insertar en la tabla usuarios
+    INSERT INTO usuarios (nombre_usuario, contraseña, rol, id_cliente)
+    VALUES (p_username, p_contrasena, 'cliente', v_id_cliente);
+
+	COMMIT;
+
+END

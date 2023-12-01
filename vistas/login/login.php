@@ -32,7 +32,7 @@
                 <h2>Iniciar Sesion </h2>
 
                 <div class="input-box animation" style="--i: 1; --j: 24;">
-                    <input type="text" name="email" required placeholder="Nombre de Usuario">
+                    <input type="text" name="username" required placeholder="Nombre de Usuario">
                     <i class='bx bxs-envelope'></i>
                 </div>
 
@@ -76,7 +76,8 @@
                     <input type="text" name="name" required placeholder="Nombre Completo ">
                     <i class='bx bxs-envelope'></i>
                 </div>
-                <input type="address" name="address" required placeholder="Dirección">
+                <input type="text" name="username" required placeholder="Nombre de Usuario">
+                <input type="text" name="address" required placeholder="Dirección">
                 <input type="email" name="email" required placeholder="Correo Electrónico">
                 <input type="password" name="password" placeholder="Contraseña" required
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$"

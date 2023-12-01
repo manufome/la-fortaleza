@@ -18,7 +18,7 @@ class LoginController{
     }
 
     public function login(){
-        $email = $_POST['email'];
+        $email = $_POST['username'];
         $password = $_POST['password'];
         $admin = isset($_POST['admin']) ? true : false;
         $user = $this->model->validateUser($email, $password, $admin);
@@ -47,17 +47,17 @@ class LoginController{
 
     public function register(){
         $name = $_POST['name'];
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $address = $_POST['address'];
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
         if($password == $confirmPassword){
-            $user = $this->model->createUser($name, $email, $address, $password);
+            $user = $this->model->createUser($name, $username, $email, $address, $password);
             if($user){
-                $_SESSION['user'] = $user;
-                header('Location: index.php?controller=home&action=index');
+                $this->login();
             }else{
-                $error_register = 'Error al registrar el usuario';
+                $error_register = 'El usuario o el correo ya existen';
                 require_once 'vistas/login/login.php';
             }
         }else{

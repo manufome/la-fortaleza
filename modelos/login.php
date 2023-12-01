@@ -10,13 +10,15 @@ class Login{
     }
 
     // Create
-    function createUser($nombre, $correo, $direccion, $contrasena){
-        $query = "INSERT INTO usuarios (nombre_usuario, contraseña, rol, id_cliente, id_empleado) VALUES ('$nombre', '$correo', '$direccion', '$contrasena')";
-        $stmt = $this->conn->prepare($query);
+    function createUser($nombre, $username, $correo, $direccion, $contrasena){
+
+        $procedure = "CALL sp_registrar_cliente(?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($procedure);
         $stmt->bindParam(1, $nombre);
-        $stmt->bindParam(2, $correo);
-        $stmt->bindParam(3, $direccion);
-        $stmt->bindParam(4, $contrasena);
+        $stmt->bindParam(2, $username);
+        $stmt->bindParam(3, $correo);
+        $stmt->bindParam(4, $direccion);
+        $stmt->bindParam(5, $contrasena);
         $stmt->execute();
         return $stmt;
     }
@@ -37,8 +39,12 @@ class Login{
             $rol = 'cliente';
         }
         $stmt->bindParam(3, $rol);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        try{
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            return false;
+        }
     }
 
     // Update
