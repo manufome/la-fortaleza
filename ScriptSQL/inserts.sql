@@ -111,61 +111,6 @@ VALUES
 ('HARINA DE TRIGO QUICKSY 500 G', 1890, 10),
 ('PREMEZCLA DE GALLETAS CON CHIPS DE CHOCOLATE QU', 4690, 10);
 
--- Inserts para la tabla de ubicaciones
-INSERT INTO ubicaciones (direccion, ciudad) VALUES
-  ('Calle 123', 'Ciudad A'),
-  ('Avenida Principal', 'Ciudad B'),
-  ('Calle Central', 'Ciudad C');
-
--- Inserts para la tabla de almacenes
-INSERT INTO almacenes (nombre_almacen, id_ubicacion) VALUES
-  ('Almacén 1', 1),
-  ('Almacén 2', 2),
-  ('Almacén 3', 3);
-
--- Inserts para la tabla de empleados
-INSERT INTO empleados (nombre, apellido, correo, telefono, fecha_contratacion, id_jefe, titulo_puesto) VALUES
-  ('Juan', 'Gomez', 'juan.gomez@email.com', '123-456-7890', '2023-01-01', NULL, 'Gerente'),
-  ('Ana', 'Martinez', 'ana.martinez@email.com', '987-654-3210', '2023-02-15', 1, 'Supervisor'),
-  ('Carlos', 'Lopez', 'carlos.lopez@email.com', '555-555-5555', '2023-03-20', 2, 'Asistente');
-
--- Inserts para la tabla de clientes
-INSERT INTO clientes (nombre, direccion, sitio_web, limite_credito) VALUES
-  ('Cliente A', 'Calle Principal 456', 'www.clientea.com', 5000.00),
-  ('Cliente B', 'Avenida Central 789', 'www.clienteb.com', 8000.00),
-  ('Cliente C', 'Calle Secundaria 123', 'www.clientec.com', 10000.00);
-
--- Inserts para la tabla de contactos
-INSERT INTO contactos (nombre_contacto, apellido_contacto, correo, telefono, id_cliente) VALUES
-  ('Contacto 1', 'Cliente A', 'contacto1@clienteA.com', '111-111-1111', 1),
-  ('Contacto 2', 'Cliente B', 'contacto2@clienteB.com', '222-222-2222', 2),
-  ('Contacto 3', 'Cliente C', 'contacto3@clienteC.com', '333-333-3333', 3);
-
--- Inserts para la tabla de órdenes
-INSERT INTO ordenes (id_cliente, estado, id_vendedor, fecha_orden) VALUES
-  (1, 'En Proceso', 2, '2023-04-01'),
-  (2, 'Entregado', 1, '2023-04-02'),
-  (3, 'En Proceso', NULL, '2023-04-03');
-
--- Inserts para la tabla de ítems de órdenes
-INSERT INTO items_ordenes (id_orden, id_item, id_producto, cantidad, precio_unitario) VALUES
-  (1, 1, 1, 10, 50.00),
-  (1, 2, 2, 5, 30.00),
-  (2, 1, 3, 8, 25.00),
-  (3, 1, 1, 12, 40.00),
-  (3, 2, 2, 6, 35.00);
-
--- Inserts para la tabla de inventarios
-INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
-  (1, 1, 100),
-  (2, 1, 50),
-  (3, 2, 80),
-  (1, 3, 120),
-  (2, 3, 60);
-
-
-
-
 -- Huevos
 INSERT INTO productos (nombre_producto, precio_venta, id_categoria)
 VALUES  
@@ -210,8 +155,6 @@ VALUES
 ('CONCHA CAPRÍSSIMA 250 GRS', 1350, 15),  
 ('CABELLO DE ÁNGEL CAPRÍSSIMA 250 GRS', 1350, 15);
 
-
-
 -- Platos preparados
 INSERT INTO productos (nombre_producto, precio_venta, id_categoria)
 VALUES  
@@ -255,11 +198,13 @@ INSERT INTO ubicaciones (direccion, ciudad) VALUES
   ('Avenida Principal', 'Bogotá'),
   ('Calle Central', 'Bogotá');
 
+
 -- Inserts para la tabla de almacenes
 INSERT INTO almacenes (nombre_almacen, id_ubicacion) VALUES
   ('Almacén 1', 1),
   ('Almacén 2', 2),
   ('Almacén 3', 3);
+
 
 -- Inserts para la tabla de empleados
 INSERT INTO empleados (nombre, apellido, correo, telefono, fecha_contratacion, id_jefe, titulo_puesto) VALUES
@@ -297,6 +242,7 @@ INSERT INTO ordenes (id_cliente, estado, id_vendedor, fecha_orden) VALUES
   (2, 'Entregado', 1, '2023-04-02'),
   (3, 'En Proceso', NULL, '2023-04-03');
 
+
 -- Inserts para la tabla de ítems de órdenes
 INSERT INTO items_ordenes (id_orden, id_item, id_producto, cantidad, precio_unitario) VALUES
   (1, 1, 1, 10, 50.00),
@@ -304,6 +250,7 @@ INSERT INTO items_ordenes (id_orden, id_item, id_producto, cantidad, precio_unit
   (2, 1, 3, 8, 25.00),
   (3, 1, 1, 12, 40.00),
   (3, 2, 2, 6, 35.00);
+
 
 -- Inserts para la tabla de inventarios
 INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
