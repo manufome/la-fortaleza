@@ -28,7 +28,7 @@
                 <ul>
                     <li class="submenu">
                         <img id="img-carrito" src="assets/images/icons/car.png" alt="car" style="width: 30px; height: 30px;">
-                        <div id="carrito">
+                        <div id="carrito" style="overflow-y: auto; max-height: 700px;">
                             <table id="lista-carrito">
                                 <thead>
                                     <tr>
