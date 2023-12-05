@@ -8,7 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body
+style = <?php if (isset($admin) && $admin) {
+    echo '"background-image: url(.././assets/images/adminLogin.jpg); background-size: cover;"';
+} else {
+    echo '"background-image: url(.././assets/images/Almacen.jpg); background-size: cover;"';
+} ?>
+>
+
     <main>
         <!-- formulario de login-Registro -->
         <div class="contenerdor__todo">

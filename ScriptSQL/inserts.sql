@@ -260,7 +260,7 @@ INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
   (1, 3, 120),
   (2, 3, 60);
 
---INVENTARIO ALMACEN 1
+-- INVENTARIO ALMACEN 1
 
 INSERT INTO inventarios (id_producto, id_almacen, cantidad) VALUES
   (3, 1, 80),   -- Arepa de chócolo

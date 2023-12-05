@@ -112,6 +112,7 @@ CREATE TABLE inventarios
     id_producto INT, -- fk
     id_almacen INT, -- fk
     cantidad INT NOT NULL,
+    alerta INT DEFAULT 5,
     PRIMARY KEY (id_producto, id_almacen),
     CONSTRAINT fk_inventarios_productos 
       FOREIGN KEY (id_producto)

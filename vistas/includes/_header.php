@@ -54,8 +54,8 @@ if($actualsesion == null || $actualsesion == ''){
 </li>
 <li class="nav-item">
     <!-- <a class="nav-link collapsed" href="categorias.php"> -->
-    <a class="nav-link collapsed" href="index.php?controller=categorias&action=index">
-        <span>  Categorias</span>
+    <a class="nav-link collapsed" href="index.php?controller=inventario&action=indexCategoria">
+        <span>Categorias</span>
     </a>
 </li>
 <hr class="sidebar-divider">

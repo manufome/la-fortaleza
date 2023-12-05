@@ -18,6 +18,12 @@ class InventarioController{
         require_once 'vistas/administrador/inventarios.php';
     }
 
+    public function indexCategoria(){
+        $categoriasModel = new CategoriasProductos($this->conn);
+        $categorias = $categoriasModel->read();
+        require_once 'vistas/administrador/categorias/categorias.php';
+    }
+
     public function editar(){
         $id = $_GET['id'];
         $categoriasModel = new CategoriasProductos($this->conn);

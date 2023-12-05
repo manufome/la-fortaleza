@@ -77,6 +77,7 @@ END ;;
 DELIMITER ;
 
 
+DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrar_cliente`(
     IN p_nombre VARCHAR(255),
     IN p_username VARCHAR(255),
@@ -109,4 +110,5 @@ BEGIN
 
 	COMMIT;
 
-END
+END ;;
+DELIMITER ;
