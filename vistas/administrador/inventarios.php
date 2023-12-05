@@ -10,6 +10,23 @@
 <center><h1>Productos</h1></center>
 <a href="index.php?controller=inventario&action=agregar"><input  class="btn btn-primary" type="button" value="Agregar producto"></a>
 </div>
+<!-- Colores de alerta -->
+<div class="col-sm-4">
+        <div class="alert alert-danger" role="alert">
+            Stock muy bajo
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="alert alert-warning" role="alert">
+            Stock bajo
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="alert alert-info" role="alert">
+            Stock medio
+        </div>
+    </div>
+<!-- Fin colores de alerta -->
 <div class="col-sm-12">
 <div class="table-responsive">
 
@@ -24,7 +41,7 @@
 <th>Precio</th>
 <th>Stock</th>
 <th>Almacen</th>
-<th>Dirección</th>
+<th>Alerta</th>
 <th>Imagen</th>
 <th>Acciones</th>
 
@@ -39,7 +56,20 @@
 foreach ($productos as $key => $row) {
     ?>
 <!-- empieza la tabla-->
-<tr>
+
+<?php
+if($row['stock'] <= $row['alerta']){
+  $color = '#fadbd8';
+}elseif($row['stock'] <= $row['alerta'] * 2){
+  $color = '#fdf3d8';
+}elseif($row['stock'] <= $row['alerta'] * 4){
+  $color = '#d7f1f5';
+}else{
+  $color = '';
+}
+?>
+
+<tr style="background-color: <?php echo $color; ?>">
 <td><?php echo $row['id_producto']; ?></td>
 <td><?php echo $row['nombre_producto']; ?></td>
 <td><?php echo $row['nombre_categoria']; ?></td>
@@ -48,8 +78,8 @@ foreach ($productos as $key => $row) {
 
 
 
-<td <?php echo 'class="' . $clase . '"'; ?>><?php echo $row['nombre_almacen']; ?></td>
-<td><?php echo $row['direccion']; ?></td>
+<td><?php echo $row['nombre_almacen']; ?></td>
+<td <?php echo $row['alerta']; ?>><?php echo $row['alerta']; ?></td>
 
 
 <td><img width="100" src="assets/images/productos/<?php echo $row['nombre_producto'].'.png'; ?>"></td>

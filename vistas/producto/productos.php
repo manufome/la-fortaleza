@@ -21,39 +21,38 @@
         <button class="arrow right-arrow" onclick="changeCategories(1)">&#9654;</button>
     </section>
 
-        <?php
-        $file_extensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
-        foreach ($categorias as $categoria) {
-            echo '<section class="products container" id="' . $categoria['nombre_categoria'] . '">';
-            echo '<h2>' . $categoria['nombre_categoria'] . '</h2>';
-            echo '<div class="box-container">';
-            echo '<div class="box-container" id="lista-' . $categoria['id_categoria'] . '">';
-            foreach ($productos as $producto) {
-                $file_name = $producto['nombre_producto'];
-                foreach ($file_extensions as $extension) {
-                    if (file_exists('assets/images/productos/' . $file_name . '.' . $extension)) {
-                        $file_name .= '.' . $extension;
-                        break;
-                    }
-                }
-                if ($producto['id_categoria'] == $categoria['id_categoria']) {
-                    echo '<div class="box">';
-                    echo '<img src="assets/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
-                    echo '<div class="product-txt">';
-                    echo '<h3>' . $producto['nombre_producto'] . '</h3>';
-                    echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
-                    echo '<a href="#" class="agregar-carrito btn-3" data-id="' . $producto['id_producto'] . '">Agregar al carrito </a>';
-                    echo '</div>';
-                    echo '</div>';
+    <div id="product-list"></div>
+    <?php
+    $file_extensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+    foreach ($categorias as $categoria) {
+        echo '<section class="products container" id="' . $categoria['nombre_categoria'] . '">';
+        echo '<h2>' . $categoria['nombre_categoria'] . '</h2>';
+        echo '<div class="box-container">';
+        echo '<div class="box-container" id="lista-' . $categoria['id_categoria'] . '">';
+        foreach ($productos as $producto) {
+            $file_name = $producto['nombre_producto'];
+            foreach ($file_extensions as $extension) {
+                if (file_exists('assets/images/productos/' . $file_name . '.' . $extension)) {
+                    $file_name .= '.' . $extension;
+                    break;
                 }
             }
-            echo '</div>';
-            echo '</div>';
-            echo '</section>';
+            if ($producto['id_categoria'] == $categoria['id_categoria']) {
+                echo '<div class="box">';
+                echo '<img src="assets/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
+                echo '<div class="product-txt">';
+                echo '<h3>' . $producto['nombre_producto'] . '</h3>';
+                echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
+                echo '<a href="#" class="agregar-carrito btn-3" data-id="' . $producto['id_producto'] . '">Agregar al carrito </a>';
+                echo '</div>';
+                echo '</div>';
+            }
         }
-        ?>
-
-
+        echo '</div>';
+        echo '</div>';
+        echo '</section>';
+    }
+    ?>
 
     <section class="testimonial container">
         <span>Cuentenos su experiencia con nosotros: </span>

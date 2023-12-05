@@ -37,11 +37,15 @@ class InventarioController{
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
         $stock = $_POST['stock'];
-        $almacen = $_POST['almacen'];
-        $direccion = $_POST['direccion'];
+        $alerta = $_POST['alerta'];
         $categoria = $_POST['categorias'];
-        $this->inventario->update($id, $nombre, $precio, $stock, $almacen, $direccion, $categoria);
-        header('Location: index.php?controller=inventario&action=index');
+        try{
+            $this->inventario->update($id, $nombre, $precio, $stock, $alerta, $categoria);
+            header('Location: index.php?controller=inventario&action=index');
+        }catch(Exception $e){
+            echo $e->getMessage();
+            var_dump($e);
+        }
     }
 
     public function eliminar(){

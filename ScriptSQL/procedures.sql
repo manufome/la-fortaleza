@@ -4,28 +4,22 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_actualizar_producto`(
     IN p_nombre VARCHAR(255),
     IN p_precio DECIMAL(10, 2),
     IN p_stock INT,
-    IN p_almacen VARCHAR(255),
-    IN p_direccion VARCHAR(255),
+    IN p_alerta INT,
     IN p_categoria INT
 )
 BEGIN
     UPDATE productos p
     JOIN categorias_productos c ON p.id_categoria = c.id_categoria
     JOIN inventarios i ON p.id_producto = i.id_producto
-    JOIN almacenes a ON i.id_almacen = a.id_almacen
-    JOIN ubicaciones u ON a.id_ubicacion = u.id_ubicacion
     SET
         p.nombre_producto = p_nombre,
         p.precio_venta = p_precio,
         i.cantidad = p_stock,
-        a.nombre_almacen = p_almacen,
-        u.direccion = p_direccion,
+        i.alerta = p_alerta,
         p.id_categoria = p_categoria
     WHERE p.id_producto = p_id;
 END ;;
 DELIMITER ;
-
-
 
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_agregar_producto`(

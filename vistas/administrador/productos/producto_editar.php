@@ -19,7 +19,7 @@
 <div class="col-sm-6">
 <div class="mb-3">
 <label for="nombre_categoria" class="form-label">Categoria *</label>
-<input type="text"  id="nombre_categoria" name="nombre_categoria" value="<?php echo $producto['nombre_categoria']; ?>" class="form-control" required>
+<input type="text"  id="nombre_categoria" name="nombre_categoria" value="<?php echo $producto['nombre_categoria']; ?>" class="form-control" readonly>
 </div>
 </div>
 </div>
@@ -28,7 +28,7 @@
 <div class="col-sm-6">
 <div class="mb-3">
 <label for="precio" class="form-label">Precio *</label>
-<input type="text"  id="precio" name="precio" value="<?php echo $producto['precio_venta']; ?>"  class="form-control" required>
+<input type="number" step="100.00" id="precio" name="precio" value="<?php echo $producto['precio_venta']; ?>"  class="form-control" required>
 </div>
 </div>
 
@@ -43,16 +43,16 @@
 <div class="row">
 <div class="col-sm-6">
 <div class="mb-3">
-<label for="almacen" class="form-label">Almacén *</label>
-<input type="text"  id="almacen" name="almacen"  value="<?php echo $producto['nombre_almacen']; ?>" class="form-control" required>
+<label for="almacen" class="form-label">Almacen *</label>
+<input type="text"  id="almacen" name="almacen"  value="<?php echo $producto['nombre_almacen']; ?>" class="form-control" readonly>
 </div>
 </div>
 
 <div class="col-sm-6">
 
 <div class="mb-3">
-<label for="direccion" class="form-label">Dirección *</label>
-<input type="text"  id="direccion" name="direccion" value="<?php echo $producto['direccion']; ?>" class="form-control" required>
+<label for="alerta" class="form-label">Alerta *</label>
+<input type="number"  id="alerta" name="alerta" value="<?php echo $producto['alerta']; ?>" class="form-control" required>
 </div>
 
 

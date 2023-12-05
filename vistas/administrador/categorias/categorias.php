@@ -8,7 +8,7 @@
 <div class="row">
 <div class="col-sm-12 mb-3">
 <center><h1>Categorias</h1></center>
-<a href="index.php?controller=inventario&action=agregar"><input  class="btn btn-primary" type="button" value="Agregar producto"></a>
+<a href="index.php?controller=inventario&action=agregarCat"><input  class="btn btn-primary" type="button" value="Agregar categoría"></a>
 </div>
 <div class="col-sm-12">
 <div class="table-responsive">
@@ -41,17 +41,17 @@ foreach ($categorias as $key => $row) {
 <td><img width="100" src="assets/images/categorias/<?php echo $row['nombre_categoria'].'.png'; ?>"></td>
 
 <td>
-  <a href="index.php?controller=inventario&action=editar&id=<?php echo $row['id_categoria'] ?>">
+  <!-- <a href="index.php?controller=inventario&action=editarCat&id=<?php echo $row['id_categoria'] ?>">
     <div">
       Editar
     </div>
   </a>
   <a>|</a>
-  <a href="index.php?controller=inventario&action=eliminar&id=<?php echo $row['id_categoria'] ?>">
+  <a href="index.php?controller=inventario&action=eliminarCat&id=<?php echo $row['id_categoria'] ?>">
     <div">
     Eliminar
     </div>
-  </a>
+  </a> -->
 </td>
 </tr>
 <?php

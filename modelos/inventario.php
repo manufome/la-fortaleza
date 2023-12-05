@@ -11,10 +11,10 @@ class Inventario{
 
     // Create
     function readProductos(){
-        $query = "SELECT p.id_producto, p.nombre_producto, c.nombre_categoria, p.precio_venta, i.cantidad as stock, a.nombre_almacen, u.direccion 
-        FROM productos p, categorias_productos c, inventarios i, almacenes a, ubicaciones u
+        $query = "SELECT p.id_producto, p.nombre_producto, c.nombre_categoria, p.precio_venta, i.cantidad as stock, a.nombre_almacen, i.alerta 
+        FROM productos p, categorias_productos c, inventarios i, almacenes a
         WHERE p.id_categoria = c.id_categoria and p.id_producto = i.id_producto
-        and i.id_almacen = a.id_almacen=i.id_almacen and a.id_ubicacion = u.id_ubicacion;";
+        and i.id_almacen = a.id_almacen=i.id_almacen;";
         $productos = $this->conn->query($query);
         while($row = $productos->fetch(PDO::FETCH_ASSOC)){
             $this->inventario[] = $row;
@@ -23,10 +23,10 @@ class Inventario{
     }
 
     function readProducto($id){
-        $query = "SELECT p.id_producto, p.nombre_producto, c.nombre_categoria, p.precio_venta, i.cantidad as stock, a.nombre_almacen, u.direccion 
-        FROM productos p, categorias_productos c, inventarios i, almacenes a, ubicaciones u
+        $query = "SELECT p.id_producto, p.nombre_producto, c.nombre_categoria, p.precio_venta, i.cantidad as stock, a.nombre_almacen, i.alerta 
+        FROM productos p, categorias_productos c, inventarios i, almacenes a
         WHERE p.id_categoria = c.id_categoria and p.id_producto = i.id_producto
-        and i.id_almacen = a.id_almacen=i.id_almacen and a.id_ubicacion = u.id_ubicacion
+        and i.id_almacen = a.id_almacen=i.id_almacen
         and p.id_producto = $id;";
         $productos = $this->conn->query($query);
         $row = $productos->fetch(PDO::FETCH_ASSOC);
@@ -38,10 +38,10 @@ class Inventario{
         $this->conn->query($procedure);
     }
 
-    function update($id, $nombre, $precio, $stock, $almacen, $direccion, $categoria){
+    function update($id, $nombre, $precio, $stock, $alerta, $categoria){
         try {
             $this->conn->beginTransaction();
-            $procedure = "CALL sp_actualizar_producto($id, '$nombre', $precio, $stock, '$almacen', '$direccion', $categoria);";
+            $procedure = "CALL sp_actualizar_producto($id, '$nombre', $precio, $stock, '$alerta', $categoria);";
             $this->conn->query($procedure);
             $this->conn->commit();
         } catch (Exception $e) {
