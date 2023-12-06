@@ -4,7 +4,7 @@
 
 <div id= "content">
         <section>
-        <div class="container mt-5">
+<div class="container mt-5" style="margin-bottom: 50px;">
 <div class="row">
 <div class="col-sm-12 mb-3">
 <center><h1>Productos</h1></center>
@@ -27,11 +27,9 @@
         </div>
     </div>
 <!-- Fin colores de alerta -->
-<div class="col-sm-12">
+<div class="col-sm-12" >
 <div class="table-responsive">
-
-
-<table class="table table-striped table-hover">
+<table  class="table table-striped table-hover" id="myTable">
 <thead>
 
 <tr>
@@ -58,16 +56,16 @@ foreach ($productos as $key => $row) {
 <!-- empieza la tabla-->
 
 <?php
-if($row['stock'] <= $row['alerta']){
-  $color = '#fadbd8';
-}elseif($row['stock'] <= $row['alerta'] * 2){
-  $color = '#fdf3d8';
-}elseif($row['stock'] <= $row['alerta'] * 4){
-  $color = '#d7f1f5';
-}else{
-  $color = '';
-}
-?>
+if ($row['stock'] <= $row['alerta']) {
+        $color = '#fadbd8';
+    } elseif ($row['stock'] <= $row['alerta'] * 2) {
+        $color = '#fdf3d8';
+    } elseif ($row['stock'] <= $row['alerta'] * 4) {
+        $color = '#d7f1f5';
+    } else {
+        $color = '';
+    }
+    ?>
 
 <tr style="background-color: <?php echo $color; ?>">
 <td><?php echo $row['id_producto']; ?></td>
@@ -82,7 +80,7 @@ if($row['stock'] <= $row['alerta']){
 <td <?php echo $row['alerta']; ?>><?php echo $row['alerta']; ?></td>
 
 
-<td><img width="100" src="assets/images/productos/<?php echo $row['nombre_producto'].'.png'; ?>"></td>
+<td><img width="100" src="assets/images/productos/<?php echo $row['nombre_producto'] . '.png'; ?>"></td>
 
 <td>
   <a href="index.php?controller=inventario&action=editar&id=<?php echo $row['id_producto'] ?>">
@@ -117,5 +115,21 @@ if($row['stock'] <= $row['alerta']){
             </div>
         </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script>
+    let table = new DataTable('#myTable', {
+        // searchable: true,
+        // perPage: 5,
+        // perPageSelect: [5, 10, 15, 20, 25, 30],
+        // labels: {
+        //     placeholder: "Buscar...",
+        //     perPage: "{select} productos por página",
+        //     noRows: "No se encontraron productos",
+        //     info: "Mostrando {start} a {end} de {rows} productos (Página {page} de {pages})"
+        // }
+    });
+
+    </script>
     <?php require 'vistas/includes/footer.php'?>
 </html>

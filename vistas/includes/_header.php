@@ -3,8 +3,8 @@ error_reporting(0);
 session_start();
 $actualsesion = $_SESSION['admin'];
 
-if($actualsesion == null || $actualsesion == ''){
-    echo 'acceso denegado: '. $_SESSION['user'];
+if ($actualsesion == null || $actualsesion == '') {
+    echo 'acceso denegado: ' . $_SESSION['user'];
     die();
 }
 ?>
@@ -19,12 +19,13 @@ if($actualsesion == null || $actualsesion == ''){
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
+
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body>
-    
+
 <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -73,7 +74,7 @@ if($actualsesion == null || $actualsesion == ''){
     <a class="nav-link" href="index.php?controller=login&action=logout">
     <span class="material-icons">logout</span>
         <span>Salir</span></a>
-        
+
 </li>
 
 <hr class="sidebar-divider d-none d-md-block">
@@ -89,18 +90,7 @@ if($actualsesion == null || $actualsesion == ''){
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary bg-gradient-info" type="button">
-                                <span class="material-icons">search</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -110,7 +100,7 @@ if($actualsesion == null || $actualsesion == ''){
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $actualsesion['nombre_usuario']?> </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-100 "><?php echo $actualsesion['nombre_usuario'] ?> </span>
                                 <span class="material-icons">account_circle</span>
                             </a>
                         </li>

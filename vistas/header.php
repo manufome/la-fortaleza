@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" href="assets/css/productos.css">
+    <!-- <link rel="stylesheet" href="assets/css/product_cards.css"> -->
 </head>
     <body>
 
@@ -28,12 +29,13 @@
                 <ul>
                     <li class="submenu">
                         <img id="img-carrito" src="assets/images/icons/car.png" alt="car" style="width: 30px; height: 30px;">
-                        <div id="carrito">
+                        <div id="carrito" style="overflow-y: auto; max-height: 700px;">
                             <table id="lista-carrito">
                                 <thead>
                                     <tr>
                                         <th>Imagen</th>
                                         <th>Nombre</th>
+                                        <th>Cantidad</th>
                                         <th>Precio</th>
                                     </tr>
                                 </thead>
