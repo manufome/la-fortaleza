@@ -19,6 +19,9 @@ loadMoreButtons.forEach((button) => {
 const carrito = document.getElementById("carrito");
 const lista = document.querySelector("#lista-carrito tbody");
 const vaciarCarritoButton = document.getElementById("vaciar-carrito");
+let data = [];
+
+//add listener to add product list valu of hidden input #
 
 cargarEventListeners();
 
@@ -76,6 +79,9 @@ function insertarCarrito(elemento) {
         precioElemento.textContent = (
             parseFloat(precioElemento.textContent) + parseFloat(elemento.precio)
         ).toFixed(2);
+        //add to data
+        let index = data.findIndex((x) => x.id == elemento.id);
+        data[index].cantidad = parseInt(cantidadElemento.textContent);
     } else {
         // Agregar el producto como nuevo registro en el carrito
         const row = document.createElement("tr");
@@ -99,6 +105,14 @@ function insertarCarrito(elemento) {
             </td>
         `;
         lista.appendChild(row);
+        //add to data
+        elemento.cantidad = 1;
+        data.push(elemento);
+        //si el boton de comprar esta deshabilitado, habilitarlo
+        let botonComprar = document.getElementById("checkout");
+        if (botonComprar.disabled) {
+            botonComprar.disabled = false;
+        }
     }
     // Actualizar el total : 'Total: $'
     const total = document.querySelector("#total");
@@ -109,6 +123,8 @@ function insertarCarrito(elemento) {
             parseFloat(elemento.precio)
         ).toFixed(2);
     alert("Producto agregado al carrito");
+    console.log(data);
+    setHiddenInput();
 }
 
 function eliminarElemento(e) {
@@ -126,6 +142,14 @@ function eliminarElemento(e) {
                 parseFloat(elemento.querySelector(".subtotal").textContent)
             ).toFixed(2);
     }
+    //si el carrito esta vacio, deshabilitar el boton de comprar
+    let botonComprar = document.getElementById("checkout");
+    if (lista.childElementCount == 0) {
+        botonComprar.disabled = true;
+    }
+    //remove from data
+    let index = data.findIndex((x) => x.id == elementoId);
+    data.splice(index, 1);
 }
 
 function vaciarCarrito() {
@@ -134,5 +158,13 @@ function vaciarCarrito() {
     }
     const total = document.querySelector("#total");
     total.textContent = "Total: $0.00";
+    data = [];
+    let botonComprar = document.getElementById("checkout");
+    botonComprar.disabled = true;
     return false;
+}
+
+function setHiddenInput() {
+    let input = document.getElementById("productos");
+    input.value = JSON.stringify(data);
 }

@@ -14,26 +14,26 @@
 </head>
 
 <body>
-    
+
     <header class="header">
         <div class="header__logo">
             <img src="assets/images/icons/logo.png" alt="">
             <h4>La Fortaleza</h4>
         </div>
         <div style="display: flex; align-items: center;">
-        <?php if (isset($_SESSION['user'])): ?>   
+        <?php if (isset($_SESSION['user'])): ?>
             <li style='margin-right: 30px'><i class="user-icon fas fa-user"></i> Bienvenido, <?php echo $_SESSION['user']['nombre_usuario']; ?>!</li>
-        <?php endif; ?> 
+        <?php endif;?>
             <nav class="header__nav">
                 <ul class="header__list">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="index.php?controller=productos&action=index">Productos</a></li>
                     <li><a href="index.php?controller=contactenos&action=index">Contáctenos</a></li>
-                    <?php if (isset($_SESSION['user'])): ?> 
+                    <?php if (isset($_SESSION['user'])): ?>
                         <li><a href="index.php?controller=login&action=logout">Salir</a></li>
                     <?php else: ?>
                         <li><a href="index.php?controller=login&action=index">Ingresar</a></li>
-                    <?php endif; ?>
+                    <?php endif;?>
                 </ul>
             </nav>
         </div>
@@ -60,19 +60,19 @@
 
         <div class="products-carousel">
             <?php
-            $img_extencions = array('jpg', 'jpeg', 'png', 'gif', 'webp');
-            foreach ($categorias as $categoria) {
-                echo '<div class="products__card">';
-                echo '<div class="products_img">';
-                // Aquí puedes usar el nombre de la categoría o algún otro dato para construir la ruta de la imagen
-                echo '<img src="assets/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
-                echo '</div>';
-                echo '<div class="products__info">';
-                echo '<h3>' . $categoria['nombre_categoria'] . '</h3>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
+$img_extencions = array('jpg', 'jpeg', 'png', 'gif', 'webp');
+foreach ($categorias as $categoria) {
+    echo '<div class="products__card">';
+    echo '<div class="products_img">';
+    // Aquí puedes usar el nombre de la categoría o algún otro dato para construir la ruta de la imagen
+    echo '<img src="assets/images/categorias/' . $categoria['nombre_categoria'] . '.png" alt="' . $categoria['nombre_categoria'] . '">';
+    echo '</div>';
+    echo '<div class="products__info">';
+    echo '<h3>' . $categoria['nombre_categoria'] . '</h3>';
+    echo '</div>';
+    echo '</div>';
+}
+?>
         </div>
         <div class="container-info">
                 <div class="info">

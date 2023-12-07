@@ -165,7 +165,7 @@ span {
     margin-top: 35px;
 }
 
-.carrito-footer input {
+.carrito-footer button {
     border: none;
 }
 
@@ -460,4 +460,91 @@ footer {
         padding: 25px;
         margin-bottom: 25px;
     }
+}
+
+/* carrito */
+
+/* Estilos para la sección de productos */
+.main-container-checkout {
+    margin: 150px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 50px;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.products-list {
+    width: 100%;
+    max-height: 60vh;
+    margin: 20px 50px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+}
+
+#lista-pedido {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+#lista-pedido th,
+#lista-pedido td {
+    color: #111419;
+    text-align: center;
+}
+
+/* Estilos para la sección del resumen de pedido */
+aside {
+    float: right;
+    width: 30%;
+    margin-top: 20px;
+}
+
+.resumen-pedido {
+    background-color: #f8f8f8;
+    max-height: 55vh;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.resumen-pedido h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.resumen-pedido__container {
+    margin-top: 10px;
+}
+
+.resumen-pedido__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.resumen-pedido__tip {
+    text-align: center;
+    font-size: 12px;
+    color: #446db4;
+}
+
+.datos-envio__container {
+    margin-top: 10px;
+}
+
+.datos-envio__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.datos-envio__item button {
+    /* center */
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
 }

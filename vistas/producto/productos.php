@@ -1,59 +1,59 @@
 
-    
+
     <section class="oferts container">
             <button class="arrow left-arrow" onclick="changeCategories(-1)">&#9664;</button>
             <?php
-        $numCategorias = count($categorias);
+$numCategorias = count($categorias);
 
-        for ($i = 0; $i < 3; $i++) {
-            $categoria = $categorias[$i]['nombre_categoria'];
+for ($i = 0; $i < 3; $i++) {
+    $categoria = $categorias[$i]['nombre_categoria'];
 
-            echo '<div class="ofert-1 b' . ($i + 1) . '">';
-            echo '<div class="ofert-txt">';
-            echo '<h3>' . $categoria . '</h3>';
-            echo '<a href="#' . $categoria . '">Y MUCHO MAS!!!</a>';
-            echo '</div>';
-            echo '<img src="assets/images/categorias/' . $categoria. '.png" alt="' . $categoria. '">';
-            echo '</div>';
-            echo '</div>';
-        }
-    ?>
+    echo '<div class="ofert-1 b' . ($i + 1) . '">';
+    echo '<div class="ofert-txt">';
+    echo '<h3>' . $categoria . '</h3>';
+    echo '<a href="#' . $categoria . '">Y MUCHO MAS!!!</a>';
+    echo '</div>';
+    echo '<img src="assets/images/categorias/' . $categoria . '.png" alt="' . $categoria . '">';
+    echo '</div>';
+    echo '</div>';
+}
+?>
         <button class="arrow right-arrow" onclick="changeCategories(1)">&#9654;</button>
     </section>
 
     <!-- <div id="app"></div> -->
-    
+
     <?php
-    $file_extensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
-    foreach ($categorias as $categoria) {
-        echo '<section class="products container" id="' . $categoria['nombre_categoria'] . '">';
-        echo '<h2>' . $categoria['nombre_categoria'] . '</h2>';
-        echo '<div class="box-container">';
-        echo '<div class="box-container" id="lista-' . $categoria['id_categoria'] . '">';
-        foreach ($productos as $producto) {
-            $file_name = $producto['nombre_producto'];
-            foreach ($file_extensions as $extension) {
-                if (file_exists('assets/images/productos/' . $file_name . '.' . $extension)) {
-                    $file_name .= '.' . $extension;
-                    break;
-                }
-            }
-            if ($producto['id_categoria'] == $categoria['id_categoria']) {
-                echo '<div class="box">';
-                echo '<img src="assets/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
-                echo '<div class="product-txt">';
-                echo '<h3>' . $producto['nombre_producto'] . '</h3>';
-                echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
-                echo '<a href="#" class="agregar-carrito btn-3" data-id="' . $producto['id_producto'] . '">Agregar al carrito </a>';
-                echo '</div>';
-                echo '</div>';
+$file_extensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+foreach ($categorias as $categoria) {
+    echo '<section class="products container" id="' . $categoria['nombre_categoria'] . '">';
+    echo '<h2>' . $categoria['nombre_categoria'] . '</h2>';
+    echo '<div class="box-container">';
+    echo '<div class="box-container" id="lista-' . $categoria['id_categoria'] . '">';
+    foreach ($productos as $producto) {
+        $file_name = $producto['nombre_producto'];
+        foreach ($file_extensions as $extension) {
+            if (file_exists('assets/images/productos/' . $file_name . '.' . $extension)) {
+                $file_name .= '.' . $extension;
+                break;
             }
         }
-        echo '</div>';
-        echo '</div>';
-        echo '</section>';
+        if ($producto['id_categoria'] == $categoria['id_categoria']) {
+            echo '<div class="box">';
+            echo '<img src="assets/images/productos/' . $file_name . '" alt="' . $producto['nombre_producto'] . '" title="' . $producto['descripcion'] . '">';
+            echo '<div class="product-txt">';
+            echo '<h3>' . $producto['nombre_producto'] . '</h3>';
+            echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
+            echo '<a href="#" class="agregar-carrito btn-3" data-id="' . $producto['id_producto'] . '">Agregar al carrito </a>';
+            echo '</div>';
+            echo '</div>';
+        }
     }
-    ?>
+    echo '</div>';
+    echo '</div>';
+    echo '</section>';
+}
+?>
 
     <section class="testimonial container">
         <span>Cuentenos su experiencia con nosotros: </span>
@@ -69,7 +69,7 @@
                 <p>Sus servicios de envíos son muy rápidos y eficaces dándome un maravilloso servicio </p>
                 <img src="assets/images/icons/starts.png">
                 <h4>Calificación </h4>
-            </div>  
+            </div>
             <div class="testimonial-1">
                 <p>Tiene una plataforma muy amigable con el usuario fácil de usar y otorga la información necesaria para
                     hacer mis compras muy ágil y fácil </p>
@@ -539,7 +539,7 @@
         const categoriaIzquierdaButton = document.querySelector('.ofert-1.b1 a');
         const categoriaCentroButton = document.querySelector('.ofert-1.b2 a');
         const categoriaDerechaButton = document.querySelector('.ofert-1.b3 a');
-        
+
         let posicionActual = 0;
 
         function changeCategories(offset) {
@@ -563,7 +563,7 @@
             categoriaIzquierdaButton.href = '#' + categorias[posicionActual].nombre_categoria;
             categoriaCentroButton.href = '#' + categorias[posicionActual + 1].nombre_categoria;
             categoriaDerechaButton.href = '#' + categorias[posicionActual + 2].nombre_categoria;
-            
+
             categoriaIzquierdaContainer.classList.remove('b1', 'b2', 'b3');
             categoriaCentroContainer.classList.remove('b1', 'b2', 'b3');
             categoriaDerechaContainer.classList.remove('b1', 'b2', 'b3');

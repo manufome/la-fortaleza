@@ -9,7 +9,6 @@ require_once 'controladores/productos.controller.php';
 
 $conn = Database::connect();
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = isset($_POST['controller']) ? $_POST['controller'] : 'home';
     $action = isset($_POST['action']) ? $_POST['action'] : 'index';
@@ -20,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Forma el nombre completo del controlador
 $controllerName = $controller . '.controller';
-$className = ucwords($controller).'Controller';
+$className = ucwords($controller) . 'Controller';
 
 // Incluye el archivo del controlador si existe
 if (file_exists("controladores/$controllerName.php")) {
@@ -40,6 +39,3 @@ if (file_exists("controladores/$controllerName.php")) {
     // Controlador no válido, manejar según sea necesario
     require_once 'vistas/errores/error404.php';
 }
-
-
-?>

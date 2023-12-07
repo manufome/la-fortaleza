@@ -27,7 +27,7 @@
 
         <div style="padding: 0 30px;">
                 <ul>
-                    <li class="submenu">
+                    <li class="submenu" id="carrito-compras">
                         <img id="img-carrito" src="assets/images/icons/car.png" alt="car" style="width: 30px; height: 30px;">
                         <div id="carrito" style="overflow-y: auto; max-height: 700px;">
                             <table id="lista-carrito">
@@ -48,7 +48,7 @@
                                         <input type="hidden" name="productos" id="productos">
                                         <input type="hidden" name="controller" value="carrito">
                                         <input type="hidden" name="action" value="checkout">
-                                        <input id='checkout' type="submit" value="Ir a Pagar" class="btn-3">
+                                        <button id='checkout' type="submit" class="btn-3" disabled>Proceder al Pago</button>
                                     </form>
                                 </div>
                                 <p id="total">Total: $0.00</p>
