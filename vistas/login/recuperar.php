@@ -14,6 +14,10 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-image: url("assets/images/recuperar.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
 
         form {
