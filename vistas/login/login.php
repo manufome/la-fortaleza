@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+if (isset($success)) {
+    echo '<script>alert("' . $success . '");</script>';
+}
+?>
 <head>
     <title>Iniciar Sesión</title>
     <meta charset="UTF-8">
@@ -13,7 +17,7 @@ style = <?php if (isset($admin) && $admin) {
     echo '"background-image: url(.././assets/images/adminLogin.jpg); background-size: cover;"';
 } else {
     echo '"background-image: url(.././assets/images/Almacen.jpg); background-size: cover;"';
-} ?>
+}?>
 >
 
     <main>
@@ -47,33 +51,28 @@ style = <?php if (isset($admin) && $admin) {
                     <input type="password" name="password" required placeholder="Contraseña">
                     <i class='bx bxs-envelope'></i>
                 </div>
-                <?php if (isset($error)) : ?>
+                <?php if (isset($error)): ?>
                     <div class="alert alert-danger" role="alert">
-                        <?= $error ?>
+                        <?=$error?>
                     </div>
-                <?php endif; ?>
+                <?php endif;?>
                 <input type="hidden" name="controller" value="login">
                 <input type="hidden" name="action" value="login">
                 <div class="input-box animation">
                     <br>
                     <br>
                     <?php if (isset($admin) && $admin) {
-                        echo '<input type="hidden" name="admin" value="true">';
-                        echo '<center><h5>¿Eres cliente?</h5><center>';
-                        echo '<center><a href="index.php?controller=login&action=index" style="font-size: 12px;">Ingresa aquí</a></center>';
-                    } else {
-                        if (isset($_SESSION['admin'])) {
-                            echo '<center><h5>Administrar Inventario</h5><center>';
-                            echo '<center><a href="index.php?controller=inventario&action=index" style="font-size: 12px;">Ingresa aquí</a></center>';
-                        }else{
-                            echo '<center><h5>¿Eres administrador?</h5><center>';
-                            echo '<center><a href="index.php?controller=login&action=index&admin=true" style="font-size: 12px;">Ingresa aquí</a></center>';
-                        }
-                    }
-                    ?>
+    echo '<input type="hidden" name="admin" value="true">';
+    echo '<center><a href="index.php?controller=login&action=index" style="font-size: 12px;">Ingresar como cliente</a></center>';
+} else {
+
+    echo '<center><a href="index.php?controller=login&action=index&admin=true" style="font-size: 12px;">Ingresar como administrador</a></center>';
+
+}
+?>
+                <center><a href="index.php?controller=login&action=recuperar" style="font-size: 12px;">He olvidado mi contraseña</a></center>
                 </div>
                 <center><button type="submit">Entrar</button></center><br>
-                <center><span class="contra"><a href="formulario de recuperacion de cuenta/formulario.html">Recuperar Contraseña</a></span></center>
             </form>
 
             <form action="index.php" method="post" class="Formulario__register">
@@ -92,11 +91,11 @@ style = <?php if (isset($admin) && $admin) {
                 <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required
                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$"
                     title="La contraseña debe contener al menos una mayúscula, una minúscula, un número y tener una longitud de 8 a 16 caracteres">
-                    <?php if (isset($error_register)) : ?>
+                    <?php if (isset($error_register)): ?>
                     <div class="alert alert-danger" role="alert">
-                        <?= $error_register ?>
+                        <?=$error_register?>
                     </div>
-                    <?php endif; ?>
+                    <?php endif;?>
                     <center><button type="submit">Registrarse</button></center>
                 <input type="hidden" name="controller" value="login">
                 <input type="hidden" name="action" value="register">
@@ -112,7 +111,7 @@ style = <?php if (isset($admin) && $admin) {
     <script src="assets/js/login.js" type='module' defer></script>
     <script type='module' defer>
         import { register } from './assets/js/login.js';
-        const flag = <?= isset($register) ? 'true' : 'false' ?>;
+        const flag = <?=isset($register) ? 'true' : 'false'?>;
         if (flag) {
             register();
         }

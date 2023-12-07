@@ -1,7 +1,7 @@
 <?php
 // Incluye la conexión y el modelo de productos
-include_once 'modelos/database.php';
 
+require_once 'vendor/autoload.php';
 class ContactenosController{
     private $modelo;
     
@@ -17,8 +17,8 @@ class ContactenosController{
         $email = $_POST['email'];
         $message = $_POST['message'];
         $to = "
-        <p>Nombre: Ariel</p>
-        <p>Email: arefome@gmail.com</p>
+        <p>Nombre: Admin</p>
+        <p>Email: lafortaleza.soporte@gmail.com</p>
         <p>Mensaje: $message</p>
         ";
         $subject = "Contacto desde la página web";

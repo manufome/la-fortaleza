@@ -3,7 +3,6 @@ let currentItem = 8;
 
 loadMoreButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        console.log("hola");
         let boxes = document.querySelectorAll(".box-container .box");
         for (let i = currentItem; i < currentItem + 4; i++) {
             if (boxes[i]) {
@@ -67,6 +66,10 @@ function insertarCarrito(elemento) {
     if (productoExistente) {
         // Incrementar la cantidad si el producto ya está en la lista
         const cantidadElemento = productoExistente.querySelector(".cantidad");
+        if (cantidadElemento.textContent === "10") {
+            alert("No puedes agregar más de 10 elementos");
+            return;
+        }
         cantidadElemento.textContent =
             parseInt(cantidadElemento.textContent) + 1;
         const precioElemento = productoExistente.querySelector(".subtotal");
@@ -97,6 +100,14 @@ function insertarCarrito(elemento) {
         `;
         lista.appendChild(row);
     }
+    // Actualizar el total : 'Total: $'
+    const total = document.querySelector("#total");
+    total.textContent =
+        "Total: $" +
+        (
+            parseFloat(total.textContent.substring(8)) +
+            parseFloat(elemento.precio)
+        ).toFixed(2);
     alert("Producto agregado al carrito");
 }
 
@@ -107,6 +118,13 @@ function eliminarElemento(e) {
         const elemento = e.target.parentElement.parentElement;
         elementoId = elemento.querySelector("a").getAttribute("data-id");
         elemento.remove();
+        const total = document.querySelector("#total");
+        total.textContent =
+            "Total: $" +
+            (
+                parseFloat(total.textContent.substring(8)) -
+                parseFloat(elemento.querySelector(".subtotal").textContent)
+            ).toFixed(2);
     }
 }
 
@@ -114,5 +132,7 @@ function vaciarCarrito() {
     while (lista.firstChild) {
         lista.removeChild(lista.lastChild);
     }
+    const total = document.querySelector("#total");
+    total.textContent = "Total: $0.00";
     return false;
 }

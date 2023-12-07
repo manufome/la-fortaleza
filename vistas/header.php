@@ -23,7 +23,7 @@
             <li><i class="user-icon fas fa-user"></i> Bienvenido, <?php echo $_SESSION['user']['nombre_usuario']; ?>!</li>
             <?php else: ?>
             <li><i class="user-icon fas fa-user"></i> Bienvenido, Invitado!</li>
-        <?php endif; ?> 
+        <?php endif;?>
 
         <div style="padding: 0 30px;">
                 <ul>
@@ -41,7 +41,19 @@
                                 </thead>
                                 <tbody></tbody>
                             </table>
-                            <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+                            <div class="carrito-footer">
+                                <div>
+                                    <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+                                    <form action="index.php" method="post">
+                                        <input type="hidden" name="productos" id="productos">
+                                        <input type="hidden" name="controller" value="carrito">
+                                        <input type="hidden" name="action" value="checkout">
+                                        <input id='checkout' type="submit" value="Ir a Pagar" class="btn-3">
+                                    </form>
+                                </div>
+                                <p id="total">Total: $0.00</p>
+                            </div>
+
                         </div>
                     </li>
                 </ul>
@@ -55,7 +67,7 @@
                         <li><a href="index.php?controller=login&action=logout">Salir</a></li>
                     <?php else: ?>
                         <li><a href="index.php?controller=login&action=index">Ingresar</a></li>
-                    <?php endif; ?>
+                    <?php endif;?>
                 </ul>
             </nav>
         </div>

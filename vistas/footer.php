@@ -8,7 +8,7 @@
     <div class="footer-info">
         <p>Dirección: Cra 128 # 142d- 96</p>
         <p>Teléfono: 456-7890</p>
-        <p>Email: lafortaleza@mitienda.com</p>
+        <p>Email: lafortaleza.soporte@gmail.com</p>
     </div>
     <div class="footer-social">
         <a href="#"><img src="assets/images/icons/facebook.png" alt="Facebook"></a>

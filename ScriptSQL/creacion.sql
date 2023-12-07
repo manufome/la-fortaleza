@@ -134,6 +134,7 @@ CREATE TABLE usuarios
     rol enum('cliente','empleado','admin') NOT NULL,
     id_cliente int DEFAULT NULL,
     id_empleado int DEFAULT NULL,
+    reset_token varchar(255) DEFAULT NULL,
     PRIMARY KEY (id_usuario),
     UNIQUE KEY nombre_usuario (nombre_usuario),
     KEY id_cliente (id_cliente),
@@ -141,3 +142,47 @@ CREATE TABLE usuarios
     CONSTRAINT usuarios_ibfk_1 FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente) ON DELETE CASCADE,
     CONSTRAINT usuarios_ibfk_2 FOREIGN KEY (id_empleado) REFERENCES empleados (id_empleado) ON DELETE CASCADE
   );
+
+
+  -- Trigger para eliminar usuario cuando se borra un cliente
+DELIMITER //
+
+CREATE TRIGGER trg_delete_usuario_cliente
+BEFORE DELETE ON clientes
+FOR EACH ROW
+BEGIN
+    DELETE FROM usuarios WHERE id_cliente = OLD.id_cliente;
+END;
+
+//
+
+-- Trigger para eliminar usuario cuando se borra un empleado
+CREATE TRIGGER trg_delete_usuario_empleado
+BEFORE DELETE ON empleados
+FOR EACH ROW
+BEGIN
+    DELETE FROM usuarios WHERE id_empleado = OLD.id_empleado;
+END;
+
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER check_usuario_rol
+BEFORE INSERT ON usuarios
+FOR EACH ROW
+BEGIN
+    IF NEW.rol = 'cliente' AND NEW.id_empleado IS NOT NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Un usuario no puede ser cliente y empleado al mismo tiempo.';
+    END IF;
+    
+    IF NEW.rol = 'empleado' AND NEW.id_cliente IS NOT NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Un usuario no puede ser empleado y cliente al mismo tiempo.';
+    END IF;
+END //
+
+DELIMITER ;

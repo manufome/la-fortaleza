@@ -157,6 +157,35 @@ span {
     display: block;
     margin-bottom: 25px;
 }
+
+.carrito-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.carrito-footer input {
+    border: none;
+}
+
+.carrito-footer div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* alineado a la derecha */
+#total {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 25px;
+    margin-right: 45px;
+    text-align: right;
+}
+
 .butons {
     display: flex;
 }
