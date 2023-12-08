@@ -8,8 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="assets/css/productos.css">
-    <!-- <link rel="stylesheet" href="assets/css/product_cards.css"> -->
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
     <body>
 

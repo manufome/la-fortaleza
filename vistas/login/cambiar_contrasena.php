@@ -14,6 +14,10 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-image: url("assets/images/supermercado.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
 
         form {
@@ -54,6 +58,7 @@
             margin-bottom: 10px;
             font-size: 9px;
         }
+
     </style>
 </head>
 <body>

@@ -94,7 +94,8 @@ class LoginController
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'lafortaleza.soporte@gmail.com';
-                $mail->Password = getenv('SMTP_PWD'); //SMTP password, si no funciona, cambiar por la contraseña de la cuenta de gmail ejemplo: '123456789'
+                $mail->Password = 'rgnh sfbb nnst rrjd'
+                ; //SMTP password, si no funciona, cambiar por la contraseña de la cuenta de gmail ejemplo: '123456789'
                 $mail->SMTPSecure = 'ssl';
                 $mail->Port = 465;
 

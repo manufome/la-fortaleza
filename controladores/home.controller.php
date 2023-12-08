@@ -15,9 +15,7 @@ class HomeController
     public function index()
     {
         $categorias = $this->modelo->read();
-        // require_once 'vistas/header.php';
-        // //change css file
-        // echo '<link rel="stylesheet" href="assets/css/index.css">';
+        require_once 'vistas/header.php';
         require_once 'vistas/home.php';
         require_once 'vistas/footer.php';
     }
