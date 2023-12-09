@@ -36,6 +36,14 @@ function cargarEventListeners() {
             e.preventDefault();
             eliminarElemento(e);
         }
+        if (e.target.classList.contains("aumentar")) {
+            e.preventDefault();
+            aumentarCantidad(e);
+        }
+        if (e.target.classList.contains("disminuir")) {
+            e.preventDefault();
+            disminuirCantidad(e);
+        }
     });
 
     vaciarCarritoButton.addEventListener("click", vaciarCarrito);
@@ -55,9 +63,58 @@ function leerDatosElemento(elemento) {
         titulo: elemento.querySelector("h3").textContent,
         precio: elemento.querySelector(".precio").textContent,
         id: elemento.querySelector("a").getAttribute("data-id"),
+        cantidad: elemento.querySelector(".cantidad").textContent,
     };
     // Agregar el producto al carrito
     insertarCarrito(infoElemento);
+    //reinicio de cantidad
+    elemento.querySelector(".cantidad").textContent = 1;
+}
+
+function aumentarCantidad(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("aumentar")) {
+        const elemento = e.target.parentElement.parentElement;
+        const cantidadElemento = elemento.querySelector(".cantidad");
+        if (cantidadElemento.textContent === "10") {
+            alert("No puedes agregar más de 10 elementos");
+            return;
+        }
+        cantidadElemento.textContent =
+            parseInt(cantidadElemento.textContent) + 1;
+        const precioElemento = elemento.querySelector(".subtotal");
+        precioElemento.textContent = (
+            parseFloat(precioElemento.textContent) +
+            parseFloat(elemento.querySelector(".precio").textContent)
+        ).toFixed(2);
+        //add to data
+        let index = data.findIndex((x) => x.id == elemento.id);
+        data[index].cantidad = parseInt(cantidadElemento.textContent);
+        setHiddenInput();
+    }
+}
+
+function disminuirCantidad(e) {
+    e.preventDefault();
+    if (e.target.classList.contains("disminuir")) {
+        const elemento = e.target.parentElement.parentElement;
+        const cantidadElemento = elemento.querySelector(".cantidad");
+        if (cantidadElemento.textContent === "1") {
+            alert("No puedes agregar menos de 1 elemento");
+            return;
+        }
+        cantidadElemento.textContent =
+            parseInt(cantidadElemento.textContent) - 1;
+        const precioElemento = elemento.querySelector(".subtotal");
+        precioElemento.textContent = (
+            parseFloat(precioElemento.textContent) -
+            parseFloat(elemento.querySelector(".precio").textContent)
+        ).toFixed(2);
+        //add to data
+        let index = data.findIndex((x) => x.id == elemento.id);
+        data[index].cantidad = parseInt(cantidadElemento.textContent);
+        setHiddenInput();
+    }
 }
 
 function insertarCarrito(elemento) {
@@ -74,7 +131,8 @@ function insertarCarrito(elemento) {
             return;
         }
         cantidadElemento.textContent =
-            parseInt(cantidadElemento.textContent) + 1;
+            parseInt(cantidadElemento.textContent) +
+            parseInt(elemento.cantidad);
         const precioElemento = productoExistente.querySelector(".subtotal");
         precioElemento.textContent = (
             parseFloat(precioElemento.textContent) + parseFloat(elemento.precio)
@@ -93,8 +151,12 @@ function insertarCarrito(elemento) {
             <td>
                 ${elemento.titulo}
             </td>
-            <td class="cantidad">
-                 1
+            <td>
+            <div class="cantidad-btn">
+            <a href="#" class="disminuir" data-id="${elemento.id}">-</a>
+            <p class="cantidad">${elemento.cantidad}</p>
+            <a href="#" class="aumentar" data-id="${elemento.id}">+</a>
+            </div>
             </td>
             <td class="subtotal">
                 ${elemento.precio}
@@ -114,6 +176,7 @@ function insertarCarrito(elemento) {
             botonComprar.disabled = false;
         }
     }
+
     // Actualizar el total : 'Total: $'
     const total = document.querySelector("#total");
     total.textContent =
@@ -150,6 +213,7 @@ function eliminarElemento(e) {
     //remove from data
     let index = data.findIndex((x) => x.id == elementoId);
     data.splice(index, 1);
+    setHiddenInput();
 }
 
 function vaciarCarrito() {
@@ -167,4 +231,8 @@ function vaciarCarrito() {
 function setHiddenInput() {
     let input = document.getElementById("productos");
     input.value = JSON.stringify(data);
+}
+
+function storageCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(data));
 }

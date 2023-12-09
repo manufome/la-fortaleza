@@ -39,6 +39,43 @@
     margin-right: 10px;
 }
 
+.header__search {
+    flex-grow: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 40px;
+    border: 1px solid #038de9;
+}
+
+.header__search:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header__search form {
+    width: 100%;
+    display: flex;
+}
+
+.header__search input {
+    width: 90%;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+}
+
+.header__search button {
+    width: 10%;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .header__nav {
     display: flex;
     justify-content: space-between;
@@ -316,7 +353,13 @@ img {
 .submenu {
     position: relative;
 }
-.submenu #carrito {
+
+.submenu:hover {
+    transform: scale(1.1);
+}
+/* carrito y user */
+.submenu #carrito,
+.submenu #user-menu {
     display: none;
 }
 .submenu:hover #carrito {
@@ -330,6 +373,22 @@ img {
     padding: 20px;
     min-width: 800px;
 }
+.submenu:hover #user-menu {
+    display: block;
+    position: absolute;
+    right: 0;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    z-index: 1;
+    background-color: #4e4b5076;
+    padding: 0 10px;
+    min-width: 150px;
+}
+
+.submenu:hover #user-menu li {
+    margin: 10px 0;
+}
+
 table {
     width: 100%;
 }
@@ -402,6 +461,7 @@ span {
     height: 550px;
 }
 .oferts {
+    margin-top: 100px;
     padding: 100px 0;
     display: flex;
     justify-content: space-between;
@@ -456,6 +516,7 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
+
 .box {
     border-top: 2px solid #038de9;
     padding: 20px;
@@ -463,6 +524,14 @@ h2 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     background-color: #f6fafb;
     display: none;
+    max-width: 325px;
+}
+
+.box:hover {
+    border-top: 2px solid #ff9100;
+    transition: 0.5s;
+    /* shadow */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .box:nth-child(1),
 .box:nth-child(2),
@@ -477,15 +546,16 @@ h2 {
 .box img {
     height: 200px;
 }
-.produc-txt h3 {
-    font-size: 20px;
-    color: #111419;
-    margin-bottom: 10px;
+.product-txt h3 {
+    height: 60px; /* Fija la altura de los títulos (ajusta según sea necesario) */
+    margin: 0; /* Elimina márgenes para evitar espacios adicionales */
+    overflow: hidden; /* Oculta cualquier desbordamiento (si es necesario) */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos para títulos largos */
 }
-.produc-txt p {
-    margin-bottom: 25px;
-    color: #515557;
+
+.product-btns {
 }
+
 .precio {
     font-size: 17px;
     font-weight: 700;
@@ -692,6 +762,42 @@ footer {
     text-align: center;
 }
 
+.arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cantidad-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: auto 5px;
+}
+
+.cantidad-btn .aumentar,
+.cantidad-btn .disminuir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #038de9;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.cantidad-btn .aumentar:hover,
+.cantidad-btn .disminuir:hover {
+    background-color: #13462e;
+    transform: scale(1.1);
+}
+
 /* Estilos para la sección del resumen de pedido */
 aside {
     float: right;
@@ -743,4 +849,162 @@ aside {
     display: block;
     margin: 0 auto;
     margin-top: 20px;
+}
+
+/* Estilos para la sección de información de cuenta */
+
+.main-container-userinfo {
+    margin: 60px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 50px;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.card__header {
+    width: 100%;
+    height: 50px;
+    background-color: #038de9;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.card__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.img-account-profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+.help-block {
+    color: #81be72;
+    font-size: 14px;
+    margin: 10px 0;
+}
+.error-block {
+    color: #f18c8c;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.account-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.account-details h2 {
+    margin: 30px 0;
+    color: #038de9;
+}
+
+.account-details__item label {
+    /* label in the same line as input */
+    display: block;
+    margin-bottom: 5px;
+    color: #038de9;
+}
+
+.account-details__item input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #038de9;
+    padding: 0 10px;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.account-details__item input:focus {
+    outline: none;
+}
+
+#edit-details {
+    font-size: 20px;
+    color: #038de9;
+    cursor: pointer;
+}
+
+#edit-details:hover {
+    color: #13462e;
+    transform: scale(1.1);
+}
+
+#save-changes {
+    display: none;
+}
+
+#modal-avatar {
+    position: absolute;
+    top: 40%;
+    display: none;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#modal-avatar .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#modal-avatar .close:hover,
+#modal-avatar .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.avatar-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.avatar-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatar-container img:hover {
+    border: 2px solid #000;
+    transform: scale(1.1);
 }

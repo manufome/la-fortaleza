@@ -1,5 +1,5 @@
 <?php
-require_once 'modelos/login.php';
+require_once 'modelos/usuario.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 require_once 'vendor/autoload.php';
@@ -11,7 +11,7 @@ class LoginController
 
     public function __construct($conn)
     {
-        $this->model = new Login($conn);
+        $this->model = new Usuario($conn);
         $this->admin = isset($_GET['admin']) ? true : false;
     }
 
@@ -32,7 +32,7 @@ class LoginController
         if ($user) {
             if ($admin) {
                 $_SESSION['admin'] = $user;
-                header('Location: index.php?controller=infoUsuario&action=index');
+                header('Location: index.php?controller=inventario&action=index');
                 return;
             }
             $_SESSION['user'] = $user;

@@ -167,6 +167,12 @@ main {
 a:link {
     color: black;
 }
+a:visited {
+    color: #2e7694;
+}
+a:hover {
+    text-decoration: underline;
+}
 
 /* trabajando en el responsive desing */
 @media screen and (max-width: 850px) {

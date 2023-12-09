@@ -65,7 +65,7 @@ if ($actualsesion == null || $actualsesion == '') {
 </div>
 <li class="nav-item">
     <!-- <a class="nav-link collapsed" href="usuariosindex.php"> -->
-    <a class="nav-link collapsed" href="index.php?controller=infoUsuario&action=index">
+    <a class="nav-link collapsed" href="index.php?controller=inventario&action=userInfo">
         <span class="material-icons">people</span>
         <span>Información usuario</span>
     </a>

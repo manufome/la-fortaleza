@@ -1,5 +1,5 @@
 <?php
-class Login
+class Usuario
 {
     private $conn;
     public $id;
@@ -29,20 +29,20 @@ class Login
     // Read
     public function validateUser($nombre_usuario, $contrasena, $admin)
     {
-        $query = "SELECT U.*, C.*, E.*
-                    FROM usuarios U
-                    LEFT JOIN clientes C ON U.id_cliente = C.id_cliente
-                    LEFT JOIN empleados E ON U.id_empleado = E.id_empleado
-                    WHERE U.nombre_usuario = ? AND U.contraseña = ? AND U.rol = ?";
+        if ($admin) {
+            $query = "SELECT U.*, E.*
+            FROM usuarios U
+            LEFT JOIN empleados E ON U.id_empleado = E.id_empleado
+            WHERE U.nombre_usuario = ? AND U.contraseña = ?";
+        } else {
+            $query = "SELECT U.*, C.*
+            FROM usuarios U
+            LEFT JOIN clientes C ON U.id_cliente = C.id_cliente
+            WHERE U.nombre_usuario = ? AND U.contraseña = ? AND U.rol='cliente'";
+        }
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $nombre_usuario);
         $stmt->bindParam(2, $contrasena);
-        if ($admin) {
-            $rol = 'admin';
-        } else {
-            $rol = 'cliente';
-        }
-        $stmt->bindParam(3, $rol);
         try {
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -52,15 +52,19 @@ class Login
     }
 
     // Update
-    public function updateUser($id, $nombre_usuario, $nueva_contrasena)
+    public function updateUser($id, $nombre, $correo, $direccion)
     {
-        $query = "UPDATE usuarios SET nombre_usuario = ?, contraseña = ? WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $nombre_usuario);
-        $stmt->bindParam(2, $nueva_contrasena);
-        $stmt->bindParam(3, $id);
-        $stmt->execute();
-        return $stmt;
+        $query = "UPDATE clientes SET nombre = '$nombre', correo = '$correo', direccion = '$direccion' WHERE id_cliente = $id";
+
+        try {
+            $this->conn->beginTransaction();
+            $this->conn->query($query);
+            $this->conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            return false;
+        }
     }
 
     // Delete
@@ -108,7 +112,14 @@ class Login
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $password);
         $stmt->bindParam(2, $id);
-        $stmt->execute();
-        return $stmt;
+        try {
+            $this->conn->beginTransaction();
+            $stmt->execute();
+            $this->conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            return false;
+        }
     }
 }

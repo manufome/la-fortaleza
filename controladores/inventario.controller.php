@@ -20,6 +20,11 @@ class InventarioController
         require_once 'vistas/administrador/inventarios.php';
     }
 
+    public function userInfo()
+    {
+        require_once 'vistas/administrador/infoAdmin.php';
+    }
+
     public function indexCategoria()
     {
         $categoriasModel = new CategoriasProductos($this->conn);

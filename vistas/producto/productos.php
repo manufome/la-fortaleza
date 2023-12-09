@@ -1,7 +1,7 @@
 
 
     <section class="oferts container">
-            <button class="arrow left-arrow" onclick="changeCategories(-1)">&#9664;</button>
+            <button class="arrow" onclick="changeCategories(-1)"><i class="fas fa-chevron-left"></i></button>
             <?php
 $numCategorias = count($categorias);
 
@@ -18,7 +18,7 @@ for ($i = 0; $i < 3; $i++) {
     echo '</div>';
 }
 ?>
-        <button class="arrow right-arrow" onclick="changeCategories(1)">&#9654;</button>
+        <button class="arrow" onclick="changeCategories(1)"><i class="fas fa-chevron-right"></i></button>
     </section>
 
     <!-- <div id="app"></div> -->
@@ -44,7 +44,15 @@ foreach ($categorias as $categoria) {
             echo '<div class="product-txt">';
             echo '<h3>' . $producto['nombre_producto'] . '</h3>';
             echo '<p class="precio">' . $producto['precio_venta'] . '</p>';
+            echo '<div class="product-btns">';
+            echo '<div class="cantidad-btn">';
+            echo '<a href="#" class="disminuir" data-id="' . $producto['id_producto'] . '">-</a>';
+            echo '<p class="cantidad">1</p>';
+            echo '<a href="#" class="aumentar" data-id="' . $producto['id_producto'] . '">+</a>';
+            echo '</div>';
+            echo '<br>';
             echo '<a href="#" class="agregar-carrito btn-3" data-id="' . $producto['id_producto'] . '">Agregar al carrito </a>';
+            echo '</div>';
             echo '</div>';
             echo '</div>';
         }
@@ -574,3 +582,22 @@ foreach ($categorias as $categoria) {
         }
     </script>
     <script src="assets/js/script.js"></script>
+    <style>
+        .ofert-1 {
+            transition: 0.5s;
+        }
+
+        .ofert-1 h3 {
+            position: relative;
+            font-size: 1.5rem;
+            color: #fff;
+            z-index: 1;
+        }
+
+
+        .ofert-1:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            cursor: pointer;
+        }
+    </style>
