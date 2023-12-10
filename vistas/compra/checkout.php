@@ -1,45 +1,14 @@
 <div class="main-container-checkout">
     <section class="products-list">
         <table id="lista-pedido">
-            <thead>
-                <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($productos as $producto): ?>
-                <tr>
-                    <td><img src="<?php echo $producto->imagen; ?>" alt="producto" style="width: 100px; height: 100px;"></td>
-                    <td><?php echo $producto->titulo; ?></td>
-                    <td><?php echo $producto->cantidad; ?></td>
-                    <td><?php echo $producto->precio; ?></td>
-                </tr>
-                <?php endforeach;?>
-            </tbody>
+<!-- El resumen del pedido se cargará aquí -->
         </table>
     </section>
     <aside>
         <section class='resumen-pedido'>
             <h2>Resumen de Pedido</h2>
             <div class="resumen-pedido__container">
-                <div class="resumen-pedido__item">
-                    <p>Subtotal:</p>
-                    <p>$<?php echo $subtotal; ?></p>
-                </div>
-                <div class="resumen-pedido__item">
-                    <p>Envío:</p>
-                    <p>$<?php echo $envio; ?></p>
-                </div>
-                <div class="resumen-pedido__item">
-                    <p>Total:</p>
-                    <p>$<?php echo $total; ?></p>
-                </div>
-                <div class="resumen-pedido__tip">
-                    <p><?php echo $tip; ?></p>
-                </div>
+                <!-- Los Datos del pedido se cargarán aquí -->
             </div>
             <br>
             <hr>
@@ -96,6 +65,7 @@
 </div>
 <script>
     document.getElementById('carrito-compras').style.display = 'none';
+    document.getElementById('numero-productos').style.display = 'none';
     //if metodo de pago es efectivo, deshabilitar los campos de tarjeta
     //if metodo de pago es tarjeta, habilitar los campos de tarjeta
     let metodo_pago = document.getElementById('metodo_pago');
@@ -125,5 +95,4 @@
             checkout.disabled = false;
         }
     });
-
 </script>

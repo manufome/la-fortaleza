@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="assets/js/script.js"></script>
 
     <link rel="stylesheet" href="assets/css/index.css">
 </head>
@@ -30,28 +31,22 @@
         <div style="display: flex; align-items: center;">
             <div style="padding: 0 30px;">
                 <ul>
+                    <div class="contador">
+                        <span id="numero-productos">0</span>
+                    </div>
                     <li class="submenu" id="carrito-compras">
                     <i class="fa-solid fa-cart-shopping" style="color: #038de9; font-size: 24px"></i>
                         <div id="carrito" style="overflow-y: auto; max-height: 700px;">
-                            <table id="lista-carrito">
-                                <thead>
-                                    <tr>
-                                        <th>Imagen</th>
-                                        <th>Nombre</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                            <div class="lista-carrito">
+                            </div>
                             <div class="carrito-footer">
                                 <div>
-                                    <a href="#" id="vaciar-carrito" class="btn-3">Vaciar Carrito</a>
+                                    <a href="#" id="vaciar-carrito" class="btn-3">Vaciar</a>
                                     <form action="index.php" method="post">
                                         <input type="hidden" name="productos" id="productos">
                                         <input type="hidden" name="controller" value="carrito">
                                         <input type="hidden" name="action" value="checkout">
-                                        <button id='checkout' type="submit" class="btn-3" disabled>Proceder al Pago</button>
+                                        <button id='checkout' type="submit" class="btn-3" disabled>Ir a Pagar</button>
                                     </form>
                                 </div>
                                 <p id="total">Total: $0.00</p>
@@ -72,11 +67,14 @@
                             <a href="index.php?controller=infoUsuario&action=index"><i class="user-icon fas fa-user"></i> <?php echo $_SESSION['user']['nombre_usuario']; ?></a>
                             <div id="user-menu">
                                 <ul class="children">
-                                    <li><a href="index.php?controller=infoUsuario&action=index"><i class="fa-regular fa-address-card"></i> Mi Cuenta</a></li>
+                                    <li><a href="index.php?controller=infoUsuario&action=index"><i class="fa-regular fa-address-card" style='color:
+                                    #038de9;'></i> Mi Cuenta</a></li>
                                     <hr>
-                                    <li><a href="index.php?controller=carrito&action=index"><i class="fa-brands fa-shopify"></i> Mis Compras</a></li>
+                                    <li><a href="index.php?controller=carrito&action=index"><i class="fa-brands fa-shopify" style='color:
+                                    #038de9;'></i> Mis Compras</a></li>
                                     <hr>
-                                    <li><a href="index.php?controller=login&action=logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesión</a></li>
+                                    <li><a href="index.php?controller=login&action=logout"><i class="fa-solid fa-arrow-right-from-bracket" style='color:
+                                    #038de9;'></i> Cerrar Sesión</a></li>
                                 </ul>
                             </div>
                         </li>

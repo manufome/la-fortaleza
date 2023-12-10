@@ -110,6 +110,7 @@ endif;
 <script>
     document.getElementById('carrito-compras').style.display = 'none';
     document.getElementById('search-bar').style.display = 'none';
+    document.getElementById('numero-productos').style.display = 'none';
     const editDetails = document.getElementById('edit-details');
     // enable inputs
     editDetails.addEventListener('click', () => {
@@ -119,6 +120,7 @@ endif;
         });
         document.getElementById('save-changes').style.display = 'block';
     });
+
 
     // modal functions
     function toggleModal(modalId){
