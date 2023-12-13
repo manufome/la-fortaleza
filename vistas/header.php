@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js" integrity="sha512-7Au1ULjlT8PP1Ygs6mDZh9NuQD0A5prSrAUiPHMXpU6g3UMd8qesVnhug5X4RoDr35x5upNpx0A6Sisz1LSTXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/script.js"></script>
 
     <link rel="stylesheet" href="assets/css/index.css">
@@ -16,10 +17,12 @@
     <body>
 
     <header class="header">
-        <div class="header__logo">
-            <img src="assets/images/icons/logo.png" alt="">
-            <h4>La Fortaleza</h4>
-        </div>
+        <a href="index.php">
+            <div class="header__logo">
+                <img src="assets/images/icons/logo.png" alt="">
+                <h4>La Fortaleza</h4>
+            </div>
+        </a>
         <div class="header__search" id="search-bar">
             <form action="index.php" method="get">
                 <input type="hidden" name="controller" value="productos">
@@ -36,7 +39,7 @@
                     </div>
                     <li class="submenu" id="carrito-compras">
                     <i class="fa-solid fa-cart-shopping" style="color: #038de9; font-size: 24px"></i>
-                        <div id="carrito" style="overflow-y: auto; max-height: 700px;">
+                        <div id="carrito">
                             <div class="lista-carrito">
                             </div>
                             <div class="carrito-footer">
@@ -70,7 +73,7 @@
                                     <li><a href="index.php?controller=infoUsuario&action=index"><i class="fa-regular fa-address-card" style='color:
                                     #038de9;'></i> Mi Cuenta</a></li>
                                     <hr>
-                                    <li><a href="index.php?controller=carrito&action=index"><i class="fa-brands fa-shopify" style='color:
+                                    <li><a href="index.php?controller=carrito&action=compras"><i class="fa-brands fa-shopify" style='color:
                                     #038de9;'></i> Mis Compras</a></li>
                                     <hr>
                                     <li><a href="index.php?controller=login&action=logout"><i class="fa-solid fa-arrow-right-from-bracket" style='color:

@@ -74,9 +74,10 @@ CREATE TABLE ordenes
   (
     id_orden INT AUTO_INCREMENT PRIMARY KEY,
     id_cliente INT NOT NULL, -- fk
-    estado VARCHAR(20) NOT NULL,
+    estado ENUM('creado','pendiente','enviado','entregado','cancelado') NOT NULL DEFAULT 'creado',
     id_vendedor INT, -- fk
     fecha_orden DATE NOT NULL,
+    metodo_pago ENUM('efectivo','tarjeta') NOT NULL,
     CONSTRAINT fk_ordenes_clientes 
       FOREIGN KEY (id_cliente)
       REFERENCES clientes(id_cliente)
@@ -88,7 +89,7 @@ CREATE TABLE ordenes
   );
 
 -- Tabla de ítems de órdenes
-CREATE TABLE items_ordenes
+CREATE TABLE orden_items
   (
     id_orden INT, -- fk
     id_item INT,
@@ -96,11 +97,11 @@ CREATE TABLE items_ordenes
     cantidad DECIMAL(8,2) NOT NULL,
     precio_unitario DECIMAL(8,2) NOT NULL,
     PRIMARY KEY (id_orden, id_item),
-    CONSTRAINT fk_items_ordenes_productos 
+    CONSTRAINT fk_orden_items_productos 
       FOREIGN KEY (id_producto)
       REFERENCES productos(id_producto) 
       ON DELETE CASCADE,
-    CONSTRAINT fk_items_ordenes_ordenes 
+    CONSTRAINT fk_orden_items_ordenes 
       FOREIGN KEY (id_orden)
       REFERENCES ordenes(id_orden) 
       ON DELETE CASCADE

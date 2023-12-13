@@ -26,10 +26,15 @@
         a {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
+            background-color: #08a4ec6e;
+            color: #000;
             text-decoration: none;
             border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+            transform : scale(1.1);
+            color: #fff;
         }
     </style>
 </head>
@@ -41,3 +46,4 @@
     </div>
 </body>
 </html>
+

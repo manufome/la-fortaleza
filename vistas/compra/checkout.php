@@ -54,7 +54,10 @@
                     <div class="datos-envio__item">
                         <input type="hidden" name="controller" value="carrito">
                         <input type="hidden" name="action" value="realizarPedido">
-                        <input type="hidden" name="productos" value='<?php echo json_encode($productos); ?>'>
+                        <input type="hidden" name="productos-pedido" id="productos-pedido">
+                        <?php if (isset($_POST['id_pedido'])): ?>
+                            <input type="hidden" name="id_pedido" id="id_pedido" value="<?php echo $_POST['id_pedido']; ?>">
+                        <?php endif;?>
                         <button type="submit" class="btn-3">Realizar Pedido</button>
                     </div>
                 </div>
@@ -64,8 +67,9 @@
     </aside>
 </div>
 <script>
+
     document.getElementById('carrito-compras').style.display = 'none';
-    document.getElementById('numero-productos').style.display = 'none';
+    document.querySelector('.contador').style.display = 'none';
     //if metodo de pago es efectivo, deshabilitar los campos de tarjeta
     //if metodo de pago es tarjeta, habilitar los campos de tarjeta
     let metodo_pago = document.getElementById('metodo_pago');
